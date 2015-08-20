@@ -1,0 +1,65 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+    <div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">CONTROL DE CITAS</h3>
+                        <span class="fr expand-collapse-text" style="display: block;">Click para colapsar</span>
+                        <span class="fr expand-collapse-text initial-expand" style="display: none;">Click para expandir</span>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block;">
+
+    <table class="records_list buscable hover row-border compact">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Clinica</th>
+                <th>Paciente</th>
+                <th>Fecha de realizacion</th>
+                <th>Fecha de cita</th>
+                <th>Hora de cita</th>
+                <th>Estado</th>
+                <th>Tipo de cita</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('cita_edit', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">{{ entity.id }}</a></td>
+                <td>{{ entity.iddisponibilidad.idclinica.nombre }}</td>
+                <td>{{ entity.idpaciente.nombreapellido }}</td>
+                <td>{% if entity.fecharealizacion %}{{ entity.fecharealizacion|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ entity.iddisponibilidad.fecha|date('Y-m-d') }}</td>
+                <td>{{ entity.iddisponibilidad.hora|date('H:i') }}</td>
+                <td>{{ entity.estado }}</td>
+                <td>{{ entity.tipocita }}</td>
+                <td>
+                <ul>
+                <a href="{{ path('cita_edit', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">
+                {% image '@AsiClinicaBundle/Resources/public/img/actions-edit.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}                
+                </a>
+                <a href="{{ path('cita_show', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">
+                {% image '@AsiClinicaBundle/Resources/public/img/actions-delete.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}
+                </a>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+       <a class="round button blue text-upper small-button" href="{{ path('cita_new') }}" onclick= "Popup.showModal('modal');return false;">
+    CREAR NUEVA ENTRADA
+            {% image '@AsiClinicaBundle/Resources/public/img/ic_right.png' %}
+            <img src="{{ asset_url }}" />
+            {% endimage %}
+    </a>
+    {% endblock %}

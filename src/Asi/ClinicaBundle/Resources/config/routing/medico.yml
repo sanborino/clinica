@@ -1,0 +1,30 @@
+medico:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Medico:index" }
+
+medico_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Medico:show" }
+
+medico_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Medico:new" }
+
+medico_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Medico:create" }
+    requirements: { _method: post }
+
+medico_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Medico:edit" }
+
+medico_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Medico:update" }
+    requirements: { _method: post|put }
+
+medico_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Medico:delete" }
+    requirements: { _method: post|delete }

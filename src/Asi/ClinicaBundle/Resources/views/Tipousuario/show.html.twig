@@ -1,0 +1,47 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+<div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">EDITAR O ELIMINAR TIPO DE USUARIO</h3>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block;">
+
+    <table class="record_properties">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ entity.id }}</td>
+                <td>{{ entity.nombre }}</td>
+                <td>{{ entity.descripcion }}</td>
+                <td>
+                <a href="{{ path('tipousuario_edit', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">
+                {% image '@AsiClinicaBundle/Resources/public/img/actions-edit.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}                
+                </a>
+                {{ form(delete_form) }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions">
+    <a class="round button blue text-upper small-button" href="{{ path('tipousuario') }}" onclick= "Popup.showModal('modal');return false;">
+            {% image '@AsiClinicaBundle/Resources/public/img/ic_left.png' %}
+            <img src="{{ asset_url }}" />
+            {% endimage %}
+            REGRESAR
+    </a>
+    </ul>
+{% endblock %}

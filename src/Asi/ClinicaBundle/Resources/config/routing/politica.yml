@@ -1,0 +1,30 @@
+politica:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Politica:index" }
+
+politica_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Politica:show" }
+
+politica_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Politica:new" }
+
+politica_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Politica:create" }
+    requirements: { _method: post }
+
+politica_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Politica:edit" }
+
+politica_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Politica:update" }
+    requirements: { _method: post|put }
+
+politica_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Politica:delete" }
+    requirements: { _method: post|delete }

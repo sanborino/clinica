@@ -1,0 +1,149 @@
+asi_clinica_recepcion:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:ModuloRecepcion:index" }
+
+recepcion_citas:
+    path:     /citas
+    defaults: { _controller: "AsiClinicaBundle:Cita:index" }
+
+facturacion_clinicas:
+    path:     /facturacion_clinicas
+    defaults: { _controller: "AsiClinicaBundle:Facturacion:mostrarFacturas" }
+
+recepcion_factura_edit_borrar:
+   path:     /detallefactura/borrar/{id}
+   defaults: { _controller: AsiClinicaBundle:Facturacion:facturaEditBorrar}
+
+recepcion_factura_emitir:
+   path:     /emitir/factura/{id}
+   defaults: { _controller: AsiClinicaBundle:Facturacion:facturaEmision}
+
+
+
+# AsiClinicaBundle_cita:
+#         resource: "@AsiClinicaBundle/Resources/config/routing/cita.yml"
+#         prefix:   /cita
+
+recepcion_citas_cancelar:
+    path:     /{id}/cancelar
+    defaults: { _controller: AsiClinicaBundle:Cita:cancelar }
+    requirements: { _method: get }
+
+
+
+#traido de otro lado
+cita_new:
+    path:     /citas/new
+    defaults: { _controller: "AsiClinicaBundle:Cita:new" }
+
+recepcion_cita_create:
+    path:     /citas/create
+    defaults: { _controller: "AsiClinicaBundle:Cita:create" }
+    requirements: { _method: post }
+
+cita_show:
+    path:     /citas/{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Cita:show" }
+
+cita_edit:
+    path:     /citas/{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Cita:edit" }
+
+cita_update:
+    path:     /citas/{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Cita:update" }
+    requirements: { _method: post|put }
+
+cita_delete:
+    path:     /citas/{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Cita:delete" }
+    requirements: { _method: post|delete }
+
+AsiClinicaBundle_disponibilidad:
+        resource: "@AsiClinicaBundle/Resources/config/routing/disponibilidad.yml"
+        prefix:   /disponibilidad
+#
+#esto tambien
+
+recepcion_paciente_show:
+    path:     /paciente/{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Expediente:showPaciente" }
+
+recepcion_paciente_new:
+    path:     /paciente/new
+    defaults: { _controller: "AsiClinicaBundle:Expediente:newPaciente" }
+
+recepcion_paciente_create:
+    path:     /paciente/create
+    defaults: { _controller: "AsiClinicaBundle:Expediente:createPaciente" }
+    requirements: { _method: post }
+
+recepcion_paciente_edit:
+    path:     /paciente/{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Expediente:editPaciente" }
+
+recepcion_paciente_update:
+    path:     /paciente/{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Expediente:updatePaciente" }
+    requirements: { _method: post|put }
+
+
+
+
+
+AsiClinicaBundle_encargadopaciente:
+        resource: "@AsiClinicaBundle/Resources/config/routing/encargadopaciente.yml"
+        prefix:   /encargadopaciente
+
+AsiClinicaBundle_encargado:
+        resource: "@AsiClinicaBundle/Resources/config/routing/encargado.yml"
+        prefix:   /encargado
+##
+
+recepcion_factura_edit:
+    path:     /factura/{id}
+    defaults: { _controller: AsiClinicaBundle:Facturacion:facturaEdit}
+
+recepcion_expediente:
+    path:     /expediente
+    defaults: { _controller: AsiClinicaBundle:Expediente:index}
+
+recepcion_expediente_paciente:
+    path:     /expediente/{id}
+    defaults: { _controller: AsiClinicaBundle:Expediente:paciente}
+    requirements: { _method: get }
+
+recepcion_expediente_paciente_datos:
+    path:     /expediente/{id}/datos
+    defaults: { _controller: AsiClinicaBundle:Expediente:datosPaciente}
+    requirements: { _method: get }
+
+recepcion_expediente_paciente_patologia:
+    path:     /expediente/{id}/patologia
+    defaults: { _controller: AsiClinicaBundle:Expediente:pacientePatologia}
+    requirements: { _method: get }
+
+recepcion_expediente_paciente_patologia_create:
+    path:     /expediente/{id}/patologia/create
+    defaults: { _controller: AsiClinicaBundle:Expediente:pacientePatologiaCreate}
+    requirements: { _method: post }
+
+recepcion_expediente_paciente_inmunizacion:
+    path:     /expediente/{id}/inmunizacion
+    defaults: { _controller: AsiClinicaBundle:Expediente:inmunizacion}
+    requirements: { _method: get }
+
+recepcion_expediente_paciente_inmunizacion_create:
+    path:     /expediente/{id}/inmunizacion/create
+    defaults: { _controller: AsiClinicaBundle:Expediente:inmunizacionCreate}
+    requirements: { _method: post }
+
+recepcion_expediente_paciente_pednacimientodesarrollo:
+    path:     /expediente/{id}/datospediatria
+    defaults: { _controller: AsiClinicaBundle:Expediente:pednacimientodesarrollo}
+    requirements: { _method: get }
+
+recepcion_expediente_paciente_pednacimientodesarrollo_create:
+    path:     /expediente/{id}/datospediatria/create
+    defaults: { _controller: AsiClinicaBundle:Expediente:pednacimientodesarrolloCreate}
+    requirements: { _method: post }

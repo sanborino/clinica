@@ -1,0 +1,30 @@
+factura:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Factura:index" }
+
+factura_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Factura:show" }
+
+factura_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Factura:new" }
+
+factura_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Factura:create" }
+    requirements: { _method: post }
+
+factura_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Factura:edit" }
+
+factura_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Factura:update" }
+    requirements: { _method: post|put }
+
+factura_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Factura:delete" }
+    requirements: { _method: post|delete }

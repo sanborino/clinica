@@ -1,0 +1,112 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+
+<style type="text/css">
+    .header{
+        font-weight: bold;
+        font-size: 15px;
+        float:left;
+        clear:both;
+        padding:1%;
+
+    }
+    .indent{
+        margin-left: 4%;
+        font-size: 13px;
+        float:left;
+        clear:both;
+        padding:1%;
+    }
+    .indent2{
+        margin-left: 8%;
+        font-size: 13px;
+        float:left;
+        clear:both;
+        padding:1%;
+    }
+
+    label {
+        width:80%;
+        word-wrap: break-word;
+    }
+</style>
+
+    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">CONFIRMAR DATOS DE CONSULTA</h3>
+                        <span class="fr expand-collapse-text" style="display: block;">Click para colapsar</span>
+                        <span class="fr expand-collapse-text initial-expand" style="display: none;">Click para expandir</span>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block; overflow:hidden">
+    <div>
+    <label class="header">Datos Generales:</label>
+
+        <label class="indent">– Motivo de la consulta : {{ consulta.motivoconsulta }}</label>
+        <label class="indent">– Sintomas : {{ consulta.sintomas }}</label>
+        <label class="indent">– Diagn&oacute;stico : {{ consulta.diagnostico }}</label>
+        {% if(consulta.comentario) %}<label class="indent">– Comentario : {{ consulta.comentario }}</label>{% endif %}
+
+    {% if (consulta.consultaitem|length>0) %}
+    <label class="header">Datos de Examen F&iacute;sico:</label>
+
+        {% for item in consulta.consultaitem %}
+        {% if (item.valor) %}<label class="indent">– {{ item.getIditemexamenfisico().getNombre() }} : {{ item.getValorString() }}</label>{% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {% if (consulta.diagnosticopatologia|length>0) %}
+    <label class="header">Patolog&iacute;as diagnosticadas:</label>
+
+        {% for diagnostico in consulta.diagnosticopatologia %}
+            <label class="indent">– {{ diagnostico.idpacientepatologia.idpatologia.nombre }}</label>
+            <label class="indent2">Comentario : {{ diagnostico.idpacientepatologia.comentario }}</label>
+        {% endfor %}
+    {% endif %}
+
+    {% if (consulta.inmunizacion|length>0) %}
+    <label class="header">Vacunas aplicadas:</label>
+
+        {% for inmunizacion in consulta.inmunizacion %}
+            <label class="indent">– {{ inmunizacion.idvacuna.getNombre() }}</label>
+
+        {% endfor %}
+    {% endif %}
+
+    {% if (examenes|length>0) %}
+    <label class="header">Examenes realizados:</label>
+
+        {% for examen in examenes %}
+            <label class="indent">– {{ examen.idservicio.getNombre() }}</label>
+            {% if(examen.comentario) %}<label class="indent2">Observaciones : {{ examen.comentario }}</label>{% endif %}
+
+        {% endfor %}
+    {% endif %}
+
+    {% if (medicamentos|length>0) %}
+    <label class="header">Medicamentos recetados:</label>
+
+        {% for medicamento in medicamentos %}
+            <label class="indent">– {{ medicamento.idservicio.getNombre() }}</label>
+            <label class="indent2">Cantidad : {{ medicamento.cantidad }}</label>
+            {% if(medicamento.comentario) %}<label class="indent2">Indicaciones : {{ medicamento.comentario }}</label>{% endif %}
+
+        {% endfor %}
+    {% endif %}
+
+
+    </div>
+
+
+		<a class="round button blue small-button image-right ic-right-arrow" style="float:left; clear:both; margin-top:2%" href="{{ path('modulomedico_consulta_finalizar', { 'id' : id }) }}">
+		    Enviar a facturaci&oacute;n
+		</a>
+	    <a class="round button blue small-button" style="float:left; clear:both; margin-top:1%" href="{{ path('modulomedico_consulta', { 'id' : id}) }}">
+            {% image '@AsiClinicaBundle/Resources/public/img/ic_left.png' %}
+            <img src="{{ asset_url }}" />
+            {% endimage %}
+            Regresar
+	    </a>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+
+    role_hierarchy:
+        ROLE_MEDICO:       ROLE_USER
+        ROLE_ADMINISTRADOR:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                login_path: fos_user_security_login
+                check_path: fos_user_security_check
+                csrf_provider: form.csrf_provider
+            logout:       true
+            anonymous:    true
+
+    access_control:
+        - { path: ^/$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, role: ROLE_ADMINISTRADOR }
+        - { path: ^/admin$, role: ROLE_ADMINISTRADOR }
+
+
+        #Evitando que el .ico se tome como ruta en el auth.
+        - { path: ^/((_(profiler|wdt)|css|images|js)|\.ico), role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        - { path: ^/[a-z], role: ROLE_USER }

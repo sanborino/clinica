@@ -1,0 +1,30 @@
+patologia:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Patologia:index" }
+
+patologia_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Patologia:show" }
+
+patologia_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Patologia:new" }
+
+patologia_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Patologia:create" }
+    requirements: { _method: post }
+
+patologia_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Patologia:edit" }
+
+patologia_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Patologia:update" }
+    requirements: { _method: post|put }
+
+patologia_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Patologia:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,69 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+
+    <div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">PACIENTES</h3>
+                        <span class="fr expand-collapse-text" style="display: block;">Click para colapsar</span>
+                        <span class="fr expand-collapse-text initial-expand" style="display: none;">Click para expandir</span>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block;">
+
+    <table class="records_list buscable hover row-border compact">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th style="width:7%">Dui</th>
+                <th>Nombre completo</th>
+                <th style="width:5%">Edad</th>
+                <th style="width:6%">Tel&eacute;fono</th>
+                <th style="width:6%">M&oacute;vil</th>
+                <th style="width:7%">Fecha de creaci&oacute;n</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for paciente in pacientes %}
+            <tr>
+                <td>{{ paciente.id }}</td>
+                <td>{{ paciente.dui }}</td>
+                <td>{{ paciente.getNombreApellido() }}</td>
+                <td>{{ paciente.getEdad() }} a&ntilde;os</td>
+                <td>{{ paciente.telefono }}</td>
+                <td>{{ paciente.movil }}</td>
+                <td>{% if paciente.fechacreacion %}{{ paciente.fechacreacion|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                <ul>
+                <a href="{{ path('recepcion_paciente_edit', { 'id': paciente.id }) }}" onclick= "Popup.showModal('modal');return false;">
+                {% image '@AsiClinicaBundle/Resources/public/img/actions-edit.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}                
+                </a>
+                <a href="{{ path('recepcion_expediente_paciente', { 'id': paciente.id }) }}" onclick= "Popup.showModal('modal');return false;">
+                {% image '@AsiClinicaBundle/Resources/public/img/clipboard.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}                
+                </a>
+                <a href="{{ path('recepcion_expediente_paciente_datos', { 'id': paciente.id }) }}" onclick= "Popup.showModal('modal');return false;">
+                {% image '@AsiClinicaBundle/Resources/public/img/search15x15.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}                
+                </a>
+                
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        <a class="round button blue small-button" href="{{ path('recepcion_paciente_new') }}" onclick= "Popup.showModal('modal');return false;">
+        Crear nueva entrada
+            {% image '@AsiClinicaBundle/Resources/public/img/ic_right.png' %}
+            <img src="{{ asset_url }}" />
+            {% endimage %}
+        </a>
+    {% endblock %}

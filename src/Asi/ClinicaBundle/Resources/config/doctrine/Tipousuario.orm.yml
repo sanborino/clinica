@@ -1,0 +1,30 @@
+Asi\ClinicaBundle\Entity\Tipousuario:
+    type: entity
+    table: tipoUsuario
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+        descripcion:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+    oneToMany:
+        pantallaAcceso:
+            targetEntity: PantallaAcceso
+            mappedBy: tipoUsuario
+    lifecycleCallbacks: {  }

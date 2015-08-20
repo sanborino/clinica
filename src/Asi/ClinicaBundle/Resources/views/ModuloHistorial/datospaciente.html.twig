@@ -1,0 +1,148 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+
+<style type="text/css">
+    .header{
+        font-weight: bold;
+        font-size: 15px;
+        float:left;
+        clear:both;
+        padding:1%;
+        /*margin-left: 18%;*/
+        background-color: #428BCA;
+        color: white;
+        width:98%;
+
+    }
+    .indent{
+        margin-left: 4%;
+        font-size: 13px;
+        float:left;
+        clear:both;
+        padding:1%;
+    }
+    .indent2{
+        margin-left: 8%;
+        font-size: 13px;
+        float:left;
+        clear:both;
+        padding:1%;
+    }
+
+    .indent-left{
+        margin-left: 2%;
+        font-size: 13px;
+        text-align: left;
+        float:left;
+        clear:right;
+        padding:1%;   
+        width:45%;
+    }
+
+    .indent-right{
+        margin-left: 25%;
+        font-size: 13px;
+        text-align: right;
+        float:left;
+        clear:left;
+        padding:1%;
+        width:20%;
+    }
+
+    label {
+        width:80%;
+        word-wrap: break-word;
+    }
+</style>
+
+    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">DATOS DE PACIENTE</h3>
+                        <span class="fr expand-collapse-text" style="display: block;">Click para colapsar</span>
+                        <span class="fr expand-collapse-text initial-expand" style="display: none;">Click para expandir</span>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block; overflow:hidden">
+    <div>
+        <label class="header">Informaci&oacute;n b&aacute;sica</label>
+            <label class="indent-right">Id : </label><label class="indent-left">{{ paciente.id }}</label>
+            <label class="indent-right">Nombre completo : </label><label class="indent-left">{{ paciente.getNombreApellido() }}</label>
+            <label class="indent-right">G&eacute;nero : </label><label class="indent-left">{{ paciente.genero }}</label>
+            <label class="indent-right">Edad : </label><label class="indent-left">{{ paciente.getEdad() }} a&ntilde;os</label>
+            {% if paciente.telefono %}<label class="indent-right">Tel&eacute;fono : </label><label class="indent-left">{{ paciente.telefono }}</label>{% endif %}
+            {% if paciente.movil %}<label class="indent-right">M&oacute;vil : </label><label class="indent-left">{{ paciente.movil }}</label>{% endif %}
+            {% if paciente.referidopor %}<label class="indent-right">Referido por : </label><label class="indent-left">{{ paciente.referidopor }}</label>{% endif %}
+            {% if paciente.lugarnacimiento %}<label class="indent-right">Lugar de nacimiento : </label><label class="indent-left">{{ paciente.lugarnacimiento }}</label>{% endif %}
+            {% if paciente.fechacreacion %}<label class="indent-right">Fecha de creaci&oacute;n : </label><label class="indent-left">{{ paciente.fechacreacion|date('Y-m-d H:i') }}</label>{% endif %}
+            {% if paciente.direccion %}<label class="indent-right">Direcci&oacute;n : </label><label class="indent-left">{{ paciente.direccion }}</label>{% endif %}
+            <label class="indent-right">Departamento : </label><label class="indent-left">{{ paciente.idmunicipio.iddepartamento.nombre }}</label>
+            <label class="indent-right">Municipio : </label><label class="indent-left">{{ paciente.idmunicipio.nombre }}</label>
+
+        {% if paciente.encargadopaciente|length>0 %}
+            <label class="header">Encargados</label>
+            {% for encargado in paciente.encargadopaciente %}
+                <label class="indent-right" style="font-weight:bold">{{ encargado.parentesco }}:</label>
+                    <label class="indent-right">Id : </label><label class="indent-left">{{ encargado.idencargado.id }}</label>
+                    <label class="indent-right">Nombre completo : </label><label class="indent-left">{{ encargado.idencargado.getNombreApellido() }}</label>
+                    {% if encargado.idencargado.telefono %}<label class="indent-right">Tel&eacute;fono : </label><label class="indent-left">{{ encargado.idencargado.telefono }}</label>{% endif %}
+                    {% if encargado.idencargado.movil %}<label class="indent-right">M&oacute;vil : </label><label class="indent-left">{{ encargado.idencargado.movil }}</label>{% endif %}
+                    {% if encargado.idencargado.fechanacimiento %}<label class="indent-right">Edad : </label><label class="indent-left">{{ encargado.idencargado.getEdad() }}</label>{% endif %}
+                    {% if encargado.idencargado.direccion %}<label class="indent-right">Direcci&oacute;n : </label><label class="indent-left">{{ encargado.idencargado.direccion }}</label>{% endif %}
+                    <label class="indent-right">Departamento : </label><label class="indent-left">{{ encargado.idencargado.idmunicipio.iddepartamento.nombre }}</label>
+                    <label class="indent-right">Municipio : </label><label class="indent-left">{{ encargado.idencargado.idmunicipio.nombre }}</label>
+            {% endfor %}
+        {% endif %}
+
+        {% if paciente.pacientepatologia|length>0 %}
+            <label class="header">Patolog&iacute;as importantes</label>
+
+                {% for pacientepatologia in paciente.pacientepatologia %}
+                    {% if pacientepatologia.importante == true %}
+                        <label class="indent-right" style="font-weight:bold">Patolog&iacute;a : </label><label class="indent-left" style="font-weight:bold">{{ pacientepatologia.idpatologia.nombre }}</label>
+                        <label class="indent-right">Fecha de diagn&oacute;stico : </label><label class="indent-left">{{ pacientepatologia.fechadiagnostico|date('Y-m-d') }}</label>
+                        {% if pacientepatologia.comentario %}<label class="indent-right">Observaciones : </label><label class="indent-left">{{ pacientepatologia.comentario }}</label>{% endif %}
+                        {% if pacientepatologia.diagnosticopatologia %}<label class="indent-right">En consulta : </label><label class="indent-left"><a href="{{ path('modulomedico_historial_consultas_datos', { 'id' : pacientepatologia.diagnosticopatologia.idconsulta.id }) }}" target="_blank">Ver</a></label>{% endif %}
+                    {% endif %}
+                {% endfor %}
+        {% endif %}
+
+        {% if paciente.inmunizacion|length>0 %}
+            <label class="header">Inmunizaciones</label>
+                {% for inmunizacion in paciente.inmunizacion %}
+                    <label class="indent-right" style="font-weight:bold">Vacuna : </label><label class="indent-left" style="font-weight:bold">{{ inmunizacion.idvacuna.getNombre() }}</label>
+                    <label class="indent-right">Fecha tomada : </label><label class="indent-left">{{ inmunizacion.fechatomada|date('Y-m-d') }}</label>
+                    {% if inmunizacion.idconsulta %}<label class="indent-right">En consulta : </label><label class="indent-left"><a href="{{ path('modulomedico_historial_consultas_datos', { 'id' : inmunizacion.idconsulta.id }) }}" target="_blank">Ver</a></label>{% endif %}
+                {% endfor %}
+        {% endif %}
+
+        {% if paciente.pednacimientodesarrollo %}
+            <label class="header">Datos pedi&aacute;tricos</label>
+            {% if paciente.pednacimientodesarrollo.edadgestacional %}<label class="indent-right">Edad gestacional : </label><label class="indent-left">{{ paciente.pednacimientodesarrollo.edadgestacional }}</label>{% endif %}
+            {% if paciente.pednacimientodesarrollo.condicionnacimiento %}<label class="indent-right">Condici&oacute;n nacimiento : </label><label class="indent-left">{{ paciente.pednacimientodesarrollo.condicionnacimiento }}</label>{% endif %}
+            {% if paciente.pednacimientodesarrollo.cianosis %}<label class="indent-right">Cianosis : </label><label class="indent-left">{{ paciente.pednacimientodesarrollo.cianosis }}</label>{% endif %}
+            {% if paciente.pednacimientodesarrollo.convulsiones %}<label class="indent-right">Convulsiones : </label><label class="indent-left">{{ paciente.pednacimientodesarrollo.convulsiones }}</label>{% endif %}
+            {% if paciente.pednacimientodesarrollo.ictericia %}<label class="indent-right">Ictericia : </label><label class="indent-left">{{ paciente.pednacimientodesarrollo.ictericia }}</label>{% endif %}
+            {% if paciente.pednacimientodesarrollo.partocomentario %}<label class="indent-right">Comentario de parto : </label><label class="indent-left">{{ paciente.pednacimientodesarrollo.partocomentario }}</label>{% endif %}
+            {% if paciente.pednacimientodesarrollo.pesonacimiento %}<label class="indent-right">Peso de nacimiento : </label><label class="indent-left">{{ paciente.pednacimientodesarrollo.pesonacimiento }}</label>{% endif %}
+            {% if paciente.pednacimientodesarrollo.alimentacion %}<label class="indent-right">Alimentaci&oacute;n : </label><label class="indent-left">{{ paciente.pednacimientodesarrollo.alimentacion }}</label>{% endif %}
+            {% if paciente.pednacimientodesarrollo.sesento %}<label class="indent-right">Se sent&oacute; : </label><label class="indent-left">{{ paciente.pednacimientodesarrollo.sesento }}</label>{% endif %}
+            {% if paciente.pednacimientodesarrollo.separo %}<label class="indent-right">Se par&oacute; : </label><label class="indent-left">{{ paciente.pednacimientodesarrollo.separo }}</label>{% endif %}
+            {% if paciente.pednacimientodesarrollo.camino %}<label class="indent-right">Camin&oacute; : </label><label class="indent-left">{{ paciente.pednacimientodesarrollo.camino }}</label>{% endif %}
+            {% if paciente.pednacimientodesarrollo.primeraspalabras %}<label class="indent-right">Primeras palabras : </label><label class="indent-left">{{ paciente.pednacimientodesarrollo.primeraspalabras }}</label>{% endif %}
+            {% if paciente.pednacimientodesarrollo.primerdiente %}<label class="indent-right">Primer diente : </label><label class="indent-left">{{ paciente.pednacimientodesarrollo.primerdiente }}</label>{% endif %}
+            {% if paciente.pednacimientodesarrollo.frasescortas %}<label class="indent-right">Frases cortas : </label><label class="indent-left">{{ paciente.pednacimientodesarrollo.frasescortas }}</label>{% endif %}
+            {% if paciente.pednacimientodesarrollo.controlintestinal %}<label class="indent-right">Control intestinal : </label><label class="indent-left">{{ paciente.pednacimientodesarrollo.controlintestinal }}</label>{% endif %}
+            {% if paciente.pednacimientodesarrollo.obstetra %}<label class="indent-right">Obstetra : </label><label class="indent-left">{{ paciente.pednacimientodesarrollo.obstetra }}</label>{% endif %}
+        {% endif %}
+
+    </div>
+
+	    <a class="round button blue small-button" style="float:left; clear:both; margin-top:1%" href="{{ path('modulomedico_historial_pacientes') }}">
+            {% image '@AsiClinicaBundle/Resources/public/img/ic_left.png' %}
+            <img src="{{ asset_url }}" />
+            {% endimage %}
+            Regresar
+	    </a>
+
+{% endblock %}

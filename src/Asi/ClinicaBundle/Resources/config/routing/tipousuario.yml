@@ -1,0 +1,30 @@
+tipousuario:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Tipousuario:index" }
+
+tipousuario_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Tipousuario:show" }
+
+tipousuario_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Tipousuario:new" }
+
+tipousuario_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Tipousuario:create" }
+    requirements: { _method: post }
+
+tipousuario_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Tipousuario:edit" }
+
+tipousuario_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Tipousuario:update" }
+    requirements: { _method: post|put }
+
+tipousuario_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Tipousuario:delete" }
+    requirements: { _method: post|delete }

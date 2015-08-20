@@ -1,0 +1,72 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+    <div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">CAPTURA DE ENCARGADO</h3>
+                        <span class="fr expand-collapse-text" style="display: block;">Click para colapsar</span>
+                        <span class="fr expand-collapse-text initial-expand" style="display: none;">Click para expandir</span>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block;">
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th style="width:10%">Nombres</th>
+                <th style="width:10%">Apellidos</th>
+                <th style="width:7%">Telefono</th>
+                <th style="width:7%">Movil</th>
+                <th>Pacientes</th>
+                <th>Direccion</th>
+                <th style="width:5%">Activo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('encargado_edit', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">{{ entity.id }}</a></td>
+                <td>{{ entity.nombres }}</td>
+                <td>{{ entity.apellidos }}</td>
+                <td>{{ entity.telefono }}</td>
+                <td>{{ entity.movil }}</td>
+                <td>
+                    {% for encargadopaciente in entity.getEncargadopaciente() %}
+                        
+                        {{ encargadopaciente.getIdpaciente().getNombres() }} - 
+                        <i>{{ encargadopaciente.getParentesco() }}</i>  
+                        <br>
+                    {% endfor %}
+                </td>
+                <td>{{ entity.direccion }}</td>
+                <td>{{ entity.estadoActivacionString }}</td>
+                <td>
+                <ul>
+                <a href="{{ path('encargado_edit', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">
+                {% image '@AsiClinicaBundle/Resources/public/img/actions-edit.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}                
+                </a>
+
+                <a href="{{ path('encargado_show', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">
+                {% image '@AsiClinicaBundle/Resources/public/img/actions-delete.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}
+                </a>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="round button blue text-upper small-button" href="{{ path('encargado_new') }}" onclick= "Popup.showModal('modal');return false;">
+    CREAR NUEVA ENTRADA
+            {% image '@AsiClinicaBundle/Resources/public/img/ic_right.png' %}
+            <img src="{{ asset_url }}" />
+            {% endimage %}
+    </a>
+    {% endblock %}

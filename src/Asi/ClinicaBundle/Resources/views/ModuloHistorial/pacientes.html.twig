@@ -1,0 +1,65 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+
+    <div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">HISTORIAL DE PACIENTES</h3>
+                        <span class="fr expand-collapse-text" style="display: block;">Click para colapsar</span>
+                        <span class="fr expand-collapse-text initial-expand" style="display: none;">Click para expandir</span>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block;">
+
+    <table class="records_list buscable hover row-border compact">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Dui</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Fecha de nacimiento</th>
+                <th>Telefono</th>
+                <th>Movil</th>
+                <th>Fecha de creacion</th>
+                <th>Direccion</th>
+                <th>Ver datos</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.id }}</td>
+                <td>{{ entity.dui }}</td>
+                <td>{{ entity.nombres }}</td>
+                <td>{{ entity.apellidos }}</td>
+                <td>{% if entity.fechanacimiento %}{{ entity.fechanacimiento|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ entity.telefono }}</td>
+                <td>{{ entity.movil }}</td>
+                <td>{% if entity.fechacreacion %}{{ entity.fechacreacion|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ entity.direccion }}</td>
+                <td>
+                <ul>
+                <a href="{{ path('modulomedico_historial_pacientes_datos', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">
+                {% image '@AsiClinicaBundle/Resources/public/img/search15x15.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}                
+                </a>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul class="record_actions">
+        <a class="round button blue text-upper small-button" href="{{ path('modulomedico_historial') }}" onclick= "Popup.showModal('modal');return false;">
+            {% image '@AsiClinicaBundle/Resources/public/img/ic_left.png' %}
+            <img src="{{ asset_url }}" />
+            {% endimage %}
+            REGRESAR
+        </a>
+    </ul>
+    {% endblock %}

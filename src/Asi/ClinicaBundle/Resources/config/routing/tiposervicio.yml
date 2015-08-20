@@ -1,0 +1,30 @@
+tiposervicio:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Tiposervicio:index" }
+
+tiposervicio_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Tiposervicio:show" }
+
+tiposervicio_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Tiposervicio:new" }
+
+tiposervicio_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Tiposervicio:create" }
+    requirements: { _method: post }
+
+tiposervicio_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Tiposervicio:edit" }
+
+tiposervicio_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Tiposervicio:update" }
+    requirements: { _method: post|put }
+
+tiposervicio_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Tiposervicio:delete" }
+    requirements: { _method: post|delete }

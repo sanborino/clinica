@@ -1,0 +1,35 @@
+servicio:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Servicio:index" }
+
+servicio_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Servicio:show" }
+
+servicio_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Servicio:new" }
+
+servicio_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Servicio:create" }
+    requirements: { _method: post }
+
+servicio_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Servicio:edit" }
+
+servicio_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Servicio:update" }
+    requirements: { _method: post|put }
+
+servicio_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Servicio:delete" }
+    requirements: { _method: post|delete }
+
+servicio_form:
+    path:     /getform
+    defaults: { _controller: "AsiClinicaBundle:Servicio:getServicioForm" }
+    requirements: { _method: post }

@@ -1,0 +1,67 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+    <div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">INGRESAR DATOS DE RECETA</h3>
+                    
+                    </div> <!-- end content-module-heading -->
+
+    <div class="content-module-main" style="display: block;">
+    <div id="tabla">
+
+        {% if (detalles) %}
+
+        <table class="records_list">
+            <thead>
+                <tr>
+                    <th style="width: 20%">Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Comentario</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for detalle in detalles %}
+                <tr>
+                    <td>{{ detalle.idservicio.nombre }}</td>
+                    <td>{{ detalle.cantidad }}</td>
+                    <td>{{ detalle.comentario }}</td>
+                    <td>
+                    <ul>
+                    <a href="{{ path ('modulomedico_consulta_receta_edit', { 'id': id, 'idreceta': detalle.id} ) }}">
+                    {% image '@AsiClinicaBundle/Resources/public/img/actions-edit.png' %}
+                    <img src="{{ asset_url }}" />
+                    {% endimage %}
+                    </a>
+                    </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {% endif %}
+    </div>
+
+    <div id="form">
+
+        {{ form(form) }}
+        {% if(deleteform) %}
+            {{ form(deleteform) }}
+        {% endif %}
+
+    </div>
+
+ <ul class="record_actions">
+    <a class="round button blue small-button" href="{{ path('modulomedico_consulta_menu', { 'id' : id}) }}">
+            {% image '@AsiClinicaBundle/Resources/public/img/ic_left.png' %}
+            <img src="{{ asset_url }}" />
+            {% endimage %}
+            Regresar
+    </a>
+    
+</ul>
+{% endblock %}

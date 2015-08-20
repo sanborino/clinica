@@ -1,0 +1,16 @@
+parameters:
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: null
+    database_name: clinica_db
+    database_user: clinica
+    database_password: asi2
+    mailer_transport: smtp
+    mailer_host: smtp.mandrillapp.com
+    mailer_user: luismiguelsolfa@gmail.com
+    mailer_password: syux2ZghxOtY7ZRJs05vcA
+    locale: en
+    secret: b0e358bb177eea0df751a6ce35580b8339ce8eb3
+    debug_toolbar: true
+    debug_redirects: false
+    use_assetic_controller: true

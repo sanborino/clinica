@@ -1,0 +1,23 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+    <div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">CREAR CONSULTA ITEM</h3>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block;">
+
+    {{ form(form) }}
+
+<ul class="record_actions">
+    <a class="round button blue text-upper small-button" href="{{ path('consultaitem') }}"  onclick= "Popup.showModal('modal');return false;">
+            {% image '@AsiClinicaBundle/Resources/public/img/ic_left.png' %}
+            <img src="{{ asset_url }}" />
+            {% endimage %}
+            REGRESAR
+    </a>
+</ul>
+{% endblock %}

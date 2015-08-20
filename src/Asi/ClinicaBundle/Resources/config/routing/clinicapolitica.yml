@@ -1,0 +1,30 @@
+clinicapolitica:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Clinicapolitica:index" }
+
+clinicapolitica_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Clinicapolitica:show" }
+
+clinicapolitica_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Clinicapolitica:new" }
+
+clinicapolitica_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Clinicapolitica:create" }
+    requirements: { _method: post }
+
+clinicapolitica_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Clinicapolitica:edit" }
+
+clinicapolitica_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Clinicapolitica:update" }
+    requirements: { _method: post|put }
+
+clinicapolitica_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Clinicapolitica:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,30 @@
+consulta:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Consulta:index" }
+
+consulta_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Consulta:show" }
+
+# consulta_new:
+#     path:     /new
+#     defaults: { _controller: "AsiClinicaBundle:Consulta:new" }
+
+consulta_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Consulta:create" }
+    requirements: { _method: post }
+
+consulta_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Consulta:edit" }
+
+consulta_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Consulta:update" }
+    requirements: { _method: post|put }
+
+consulta_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Consulta:delete" }
+    requirements: { _method: post|delete }

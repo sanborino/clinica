@@ -1,0 +1,19 @@
+parameters:
+#    asi_clinica.example.class: Asi\ClinicaBundle\Example
+
+services:
+    security.access.post_voter:
+        class:      Asi\ClinicaBundle\Security\Authorization\Voter\AccessVoter
+        public:     false
+        tags:
+           - { name: security.voter }
+    roles_provider:
+        class:      Asi\ClinicaBundle\DependencyInjection\RolesProvider
+        public:     true
+        calls:
+           - [setEntityManager, ["@doctrine.orm.entity_manager", "@security.context"]]
+    access_checker.action_listener:
+        class: Asi\ClinicaBundle\EventListener\AccessCheckerListener
+        arguments: ["@roles_provider", "@router", "@security.context", "@doctrine.orm.entity_manager"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }

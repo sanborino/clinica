@@ -1,0 +1,30 @@
+tipomedicamento:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Tipomedicamento:index" }
+
+tipomedicamento_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Tipomedicamento:show" }
+
+tipomedicamento_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Tipomedicamento:new" }
+
+tipomedicamento_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Tipomedicamento:create" }
+    requirements: { _method: post }
+
+tipomedicamento_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Tipomedicamento:edit" }
+
+tipomedicamento_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Tipomedicamento:update" }
+    requirements: { _method: post|put }
+
+tipomedicamento_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Tipomedicamento:delete" }
+    requirements: { _method: post|delete }

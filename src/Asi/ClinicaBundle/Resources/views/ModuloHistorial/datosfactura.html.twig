@@ -1,0 +1,87 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+
+<style type="text/css">
+    .header{
+        font-weight: bold;
+        font-size: 15px;
+        float:left;
+        clear:both;
+        padding:1%;
+
+    }
+    .indent{
+        margin-left: 4%;
+        font-size: 13px;
+        float:left;
+        clear:both;
+        padding:1%;
+    }
+    .indent2{
+        margin-left: 8%;
+        font-size: 13px;
+        float:left;
+        clear:both;
+        padding:1%;
+    }
+
+    label {
+        width:80%;
+        word-wrap: break-word;
+    }
+</style>
+
+    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">DATOS DE FACTURA</h3>
+                        <span class="fr expand-collapse-text" style="display: block;">Click para colapsar</span>
+                        <span class="fr expand-collapse-text initial-expand" style="display: none;">Click para expandir</span>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block; overflow:hidden">
+    <div>
+        <label class="header">Encabezado:</label>
+            <label class="indent">Titular : {{ factura.titular }}</label>
+            {% if factura.dui %}<label class="indent">DUI : {{ factura.dui }}</label>{% endif %}
+            {% if factura.nit %}<label class="indent">DUI : {{ factura.dui }}</label>{% endif %}
+            <label class="indent">Fecha de emisi&oacute;n : {{ factura.fechahoraemision|date('Y-m-d H:i') }}</label>
+        <label class="header">Detalle:</label>
+        <table style="float:left; clear:both">
+            <thead>
+                <th style="width:70%">Descripci&oacute;n</th>
+                <th style="width:10%">Precio</th>
+                <th style="width:10%">Cantidad</th>
+                <th style="width:10%">Descuento</th>
+            </thead>
+            <tbody>
+            {% set total = 0 %}
+            {% for detalle in factura.detallefactura %}
+                {% if detalle.facturado == true %}
+                <tr>
+                    <td>{{detalle.idservicio.nombre}}</td>
+                    <td>${{detalle.precio}}</td>
+                    <td>{{detalle.cantidad}}</td>
+                    <td>{{ detalle.descuento}}%</td>
+                </tr>
+                {% set total = total + (detalle.precio * detalle.cantidad * (100-detalle.descuento)*0.01) %}
+                {% endif %}
+            {% endfor %}
+                <tr style="font-weight:bold">
+                    <td>Total</td>
+                    <td>${{ total|round(2,'ceil') }}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+	    <a class="round button blue small-button" style="float:left; clear:both; margin-top:1%" href="{{ path('modulomedico_historial_consultas') }}">
+            {% image '@AsiClinicaBundle/Resources/public/img/ic_left.png' %}
+            <img src="{{ asset_url }}" />
+            {% endimage %}
+            Regresar
+	    </a>
+
+{% endblock %}

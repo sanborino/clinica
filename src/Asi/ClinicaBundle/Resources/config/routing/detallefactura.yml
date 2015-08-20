@@ -1,0 +1,30 @@
+detallefactura:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Detallefactura:index" }
+
+detallefactura_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Detallefactura:show" }
+
+detallefactura_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Detallefactura:new" }
+
+detallefactura_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Detallefactura:create" }
+    requirements: { _method: post }
+
+detallefactura_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Detallefactura:edit" }
+
+detallefactura_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Detallefactura:update" }
+    requirements: { _method: post|put }
+
+detallefactura_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Detallefactura:delete" }
+    requirements: { _method: post|delete }

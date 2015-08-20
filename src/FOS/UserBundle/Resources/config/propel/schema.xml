@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="default" namespace="FOS\UserBundle\Propel" defaultIdMethod="native">
+
+    <table name="usuario" phpName="Usuario">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
+        <column name="nombre" type="varchar" size="255" primaryString="true" />
+        <column name="userNameCanonical" type="varchar" size="255" />
+        <unique>
+            <unique-column name="userNameCanonical" />
+        </unique>
+
+        <column name="email" type="varchar" size="255" />
+        <column name="emailCanonical" type="varchar" size="255" />
+        <unique>
+            <unique-column name="emailCanonical" />
+        </unique>
+
+        <column name="enabled" type="boolean" defaultValue="false" />
+        <column name="salt" type="varchar" size="255" required="true" />
+        <column name="password" type="varchar" size="255" required="true" />
+        <column name="lastLogin" type="timestamp" required="false" />
+        <column name="locked" type="boolean" defaultValue="false" />
+        <column name="expired" type="boolean" defaultValue="false" />
+        <column name="expiresAt" type="timestamp" required="false" />
+        <column name="confirmationToken" type="varchar" size="255" required="false" />
+        <column name="passwordRequestedAt" type="timestamp" required="false" />
+        <column name="credentialsExpired" type="boolean" defaultValue="false" />
+        <column name="credentialsExpireAt" type="timestamp" required="false" />
+        <column name="roles" type="array" />
+
+        <behavior name="typehintable">
+            <parameter name="lastLogin" value="DateTime" />
+            <parameter name="passwordRequestedAt" value="DateTime" />
+            <parameter name="roles" value="array" />
+            <parameter name="fos_group" value="FOS\UserBundle\Model\GroupInterface" />
+
+            <parameter name="nullable_columns" value="password_requested_at, expires_at, last_login, credentials_expire_at" />
+        </behavior>
+    </table>
+
+    <table name="fos_group" phpName="Group">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
+        <column name="name" type="varchar" size="255" required="true" primaryString="true" />
+        <column name="roles" type="array" />
+
+        <behavior name="typehintable">
+            <parameter name="roles" value="array" />
+        </behavior>
+    </table>
+
+    <table name="usuario_group" phpName="UserGroup" isCrossRef="true">
+        <column name="usuario_id" type="integer" required="true" primaryKey="true" />
+        <column name="fos_group_id" type="integer" required="true" primaryKey="true" />
+        <foreign-key foreignTable="usuario">
+            <reference local="usuario_id" foreign="id" />
+        </foreign-key>
+
+        <foreign-key foreignTable="fos_group">
+            <reference local="fos_group_id" foreign="id" />
+        </foreign-key>
+    </table>
+</database>

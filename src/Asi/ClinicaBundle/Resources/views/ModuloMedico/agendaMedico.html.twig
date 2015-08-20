@@ -1,0 +1,68 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+
+    
+    <div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">CITA POR MEDICO</h3>
+                        <span class="fr expand-collapse-text" style="display: block;">Click para colapsar</span>
+                        <span class="fr expand-collapse-text initial-expand" style="display: none;">Click para expandir</span>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block;">
+    <div>
+        <span style="display:inline-block; background-color:#9BF4AA; width:30px; height:16px;"></span>
+        <p style="display:inline-block;">No Realizada</p>
+        <span style="display:inline-block; background-color:#FF7171; width:30px; height:16px;"></span>
+        <p style="display:inline-block;">Realizada</p>
+    </div>
+
+
+    <table class="table table-hover" style="width:100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th style="width:8%">Fecha</th>
+                <th style="width:5%">Hora</th>
+                <th>Paciente</th>
+                <th style="width:20%">Consultorio</th>
+                <th style="width:8%">Estado</th>
+                <th>Dar Servicio </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in cita %}
+                <tr style="background-color: {% if (entry.getEstado() == 'Procesando' or entry.getEstado() == 'Pendiente') %} #9BF4AA {% else %} #FF7171 {% endif %} ">
+
+                    <td>{{ entry.id }}</td>
+                    <td>{{ entry.getidDisponibilidad.getFecha()|date('Y-m-d') }}</td>
+                    <td>{{ entry.getidDisponibilidad.getHora|date('H:i')}}</td>
+                    <td>{{ entry.getidPaciente().getNombreApellido()}} <a target="_blank" href="{{ path('modulomedico_historial_pacientes_datos', {'id' : entry.idpaciente.id}) }}">{% image '@AsiClinicaBundle/Resources/public/img/search15x15.png' %}<img src="{{ asset_url }}" />{% endimage %}</a></td>
+                    <td>{{ entry.getidDisponibilidad().getIdclinica().getNombre()}}</td>
+                    <td>{{ entry.getEstado()}}</td>
+
+                    <td>
+
+
+                    {% if (entry.getEstado() == 'Procesando' or entry.getEstado() == 'Pendiente') %}
+
+                        <a href="{{ path('modulomedico_consulta', { 'id': entry.id }) }}">
+                        {% image '@AsiClinicaBundle/Resources/public/img/confirmation.png' %}
+                        <img src="{{ asset_url }}" />
+                        {% endimage %}
+                        </a>
+
+                    {% endif %}
+
+                    </td>
+                </tr>
+            {% endfor %}
+            {% if not cita %}
+                <tr><td colspan="7">No hay citas para hoy.</td></tr>
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

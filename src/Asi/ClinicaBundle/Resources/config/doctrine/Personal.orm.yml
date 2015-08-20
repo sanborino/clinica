@@ -1,0 +1,114 @@
+Asi\ClinicaBundle\Entity\Personal:
+    type: entity
+    table: personal
+    indexes:
+        id_personal_municipio1_idx:
+            columns:
+                - idMunicipio
+        id_personal_tipo_personal1_idx:
+            columns:
+                - idTipoPersonal
+        id_personal_clinica1_idx:
+            columns:
+                - idClinica
+    uniqueConstraints:
+        id_usuario_UNIQUE:
+            columns:
+                - idUsuario
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombres:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+        apellidos:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+        fechanacimiento:
+            type: date
+            nullable: false
+            comment: ''
+            column: fechaNacimiento
+        telefono:
+            type: string
+            nullable: true
+            length: 15
+            fixed: false
+            comment: ''
+        dui:
+            type: string
+            nullable: true
+            length: 10
+            fixed: false
+            comment: ''
+        movil:
+            type: string
+            nullable: true
+            length: 15
+            fixed: false
+            comment: ''
+        direccion:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+        genero:
+            type: string
+            nullable: false
+            length: 1
+            fixed: false
+            comment: ''
+        estadoactivacion:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '1'
+            column: estadoActivacion
+    manyToOne:
+        idmunicipio:
+            targetEntity: Municipio
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idMunicipio:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idtipopersonal:
+            targetEntity: Tipopersonal
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idTipoPersonal:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToOne:
+        idusuario:
+            targetEntity: User
+            cascade: [persist]
+            mappedBy: null
+            inversedBy: idpersonal
+            joinColumns:
+                idUsuario:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToMany:
+        personalclinica:
+            targetEntity: Personalclinica
+            mappedBy: idpersonal
+    lifecycleCallbacks: {  }

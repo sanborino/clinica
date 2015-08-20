@@ -1,0 +1,27 @@
+cita:
+    path:     /
+    # defaults: { _controller: "AsiClinicaBundle:Cita:index" }
+    defaults: { _controller: "AsiClinicaBundle:Cita:crearCita" }
+
+cita_crear:
+    path:     /crear/{idDisponibilidad}
+    defaults: { _controller: "AsiClinicaBundle:Cita:crear" }
+
+cita_create:
+    path:     /create/{id}
+    defaults: { _controller: "AsiClinicaBundle:Cita:create" }
+    requirements: { _method: post }
+
+cita_historial:
+    path:     /historial
+    defaults: { _controller: "AsiClinicaBundle:Cita:historial" }
+
+cita_clinicas:
+    path:     /clinicasdisponibles
+    defaults: { _controller: "AsiClinicaBundle:Cita:getClinicas" }
+    requirements: { _method: post }
+
+cita_disponibilidades:
+    path:     /disponibilidadesclinica
+    defaults: { _controller: "AsiClinicaBundle:Cita:getDisponibilidades" }
+    requirements: { _method: post }

@@ -1,0 +1,30 @@
+pednacimientodesarrollo:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Pednacimientodesarrollo:index" }
+
+pednacimientodesarrollo_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Pednacimientodesarrollo:show" }
+
+pednacimientodesarrollo_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Pednacimientodesarrollo:new" }
+
+pednacimientodesarrollo_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Pednacimientodesarrollo:create" }
+    requirements: { _method: post }
+
+pednacimientodesarrollo_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Pednacimientodesarrollo:edit" }
+
+pednacimientodesarrollo_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Pednacimientodesarrollo:update" }
+    requirements: { _method: post|put }
+
+pednacimientodesarrollo_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Pednacimientodesarrollo:delete" }
+    requirements: { _method: post|delete }

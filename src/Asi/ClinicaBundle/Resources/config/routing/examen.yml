@@ -1,0 +1,30 @@
+examen:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Examen:index" }
+
+examen_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Examen:show" }
+
+examen_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Examen:new" }
+
+examen_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Examen:create" }
+    requirements: { _method: post }
+
+examen_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Examen:edit" }
+
+examen_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Examen:update" }
+    requirements: { _method: post|put }
+
+examen_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Examen:delete" }
+    requirements: { _method: post|delete }

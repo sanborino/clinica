@@ -1,0 +1,103 @@
+Asi\ClinicaBundle\Entity\Clinica:
+    type: entity
+    table: clinica
+    repositoryClass: Asi\ClinicaBundle\Entity\ClinicaRepository
+    indexes:
+        id_clinica_municipio1_idx:
+            columns:
+                - idMunicipio
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+        direccion:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        telefono:
+            type: string
+            nullable: false
+            length: 15
+            fixed: false
+            comment: ''
+        citahorapromedio:
+            type: time
+            nullable: false
+            comment: ''
+            column: citaHoraPromedio
+        horaaperturasemana:
+            type: time
+            nullable: false
+            comment: ''
+            column: horaAperturaSemana
+        horacierresemana:
+            type: time
+            nullable: false
+            comment: ''
+            column: horaCierreSemana
+        horaaperturasabado:
+            type: time
+            nullable: false
+            comment: ''
+            column: horaAperturaSabado
+        horacierresabado:
+            type: time
+            nullable: false
+            comment: ''
+            column: horaCierreSabado
+        horaaperturadomingo:
+            type: time
+            nullable: false
+            comment: ''
+            column: horaAperturaDomingo
+        horacierredomingo:
+            type: time
+            nullable: false
+            comment: ''
+            column: horaCierreDomingo
+        anticipacioncita:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: anticipacionCita
+        estadoactivacion:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '1'
+            column: estadoActivacion
+    manyToOne:
+        idmunicipio:
+            targetEntity: Municipio
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idMunicipio:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idespecialidad:
+            targetEntity: Especialidad
+            cascade: [persist]
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idEspecialidad:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,62 @@
+{% set oUser = app.security.getToken().getUser() %}
+
+<!-- TOP BAR -->
+<div id="top-bar">
+  
+  <div class="page-full-width cf">
+
+    <ul id="nav" class="fl">
+
+      
+      <li class="v-sep">
+        <a href="#" class="round button blue text-upper small-button menu-user image-left">Bienvenido: {{ oUser.getUsername() }}</a>
+        <ul>
+          <li><a href="{{ path('fos_user_profile_show') }}">Mi perfil</a></li>
+          <li><a href="{{ path('fos_user_profile_edit') }}">Editar perfil</a></li>
+          <li><a href="{{ path('fos_user_change_password') }}">Cambiar Password</a></li>
+        </ul> 
+      </li>
+    
+      <li><a href="{{ path('fos_user_security_logout') }}" class="round button blue text-upper small-button menu-logoff image-left">Salir</a></li>
+      
+    </ul> <!-- end nav -->
+
+          <form action="#" method="POST" id="search-form" class="fr">
+      
+    </form>
+
+  </div> <!-- end full-width -->  
+
+</div> <!-- end top-bar -->
+
+
+
+<!-- HEADER -->
+<div id="header-with-tabs">
+  
+  <div class="page-full-width cf">
+
+    <ul id="tabs" class="fl">
+
+      <li><a href="#" class="dashboard-tab active-tab">{{ oUser.getIdtipousuario().getNombre() }}</a></li>
+      
+      <!-- 
+        <li><a href="#" class="dashboard-tab">Medico</a></li>
+        <li><a href="{{ path('asi_clinica_recepcion') }}" >Recepcion</a></li>
+        <li><a href="#">Paciente</a></li>
+        <li><a href="#" class="active-tab">Administrador</a></li>
+      -->
+    </ul> <!-- end tabs -->
+    
+    <!-- Change this image to your own company's logo -->
+    <!-- The logo will automatically be resized to 30px height. -->
+    <a href="#" id="company-branding-small" class="fr">
+      {% image '@AsiClinicaBundle/Resources/public/img/logo.png' %}
+        <img src="{{ asset_url }}" />
+      {% endimage %}
+
+    </a>
+    
+  </div> <!-- end full-width -->  
+
+</div> <!-- end header -->

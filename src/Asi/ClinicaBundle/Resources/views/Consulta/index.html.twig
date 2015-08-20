@@ -1,0 +1,60 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+    <div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">CAPTURA DE CONSULTA</h3>
+                        <span class="fr expand-collapse-text" style="display: block;">Click para colapsar</span>
+                        <span class="fr expand-collapse-text initial-expand" style="display: none;">Click para expandir</span>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block;">
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Motivo de consulta</th>
+                <th>Diagnostico</th>
+                <th>Sintomas</th>
+                <th>Comentario</th>
+                <th>Fecha</th>
+                <th>Id de factura</th>
+                <th>Id de cita</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('consulta_edit', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">{{ entity.id }}</a></td>
+                <td>{{ entity.motivoconsulta }}</td>
+                <td>{{ entity.diagnostico }}</td>
+                <td>{{ entity.sintomas }}</td>
+                <td>{{ entity.comentario }}</td>
+                <td>{% if entity.fecha %}{{ entity.getFechaHora() }}{% endif %}</td>
+                <td>{{ entity.idfactura.id }}</td>
+                <td>{{ entity.idcita.id }}</td>
+                <td>
+                <ul>
+                <a href="{{ path('consulta_edit', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">
+                {% image '@AsiClinicaBundle/Resources/public/img/actions-edit.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}                
+                </a>
+
+                <a href="{{ path('consulta_show', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">
+                {% image '@AsiClinicaBundle/Resources/public/img/actions-delete.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}
+                </a>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% endblock %}

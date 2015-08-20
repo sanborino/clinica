@@ -1,0 +1,30 @@
+diagnosticopatologia:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Diagnosticopatologia:index" }
+
+diagnosticopatologia_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Diagnosticopatologia:show" }
+
+diagnosticopatologia_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Diagnosticopatologia:new" }
+
+diagnosticopatologia_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Diagnosticopatologia:create" }
+    requirements: { _method: post }
+
+diagnosticopatologia_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Diagnosticopatologia:edit" }
+
+diagnosticopatologia_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Diagnosticopatologia:update" }
+    requirements: { _method: post|put }
+
+diagnosticopatologia_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Diagnosticopatologia:delete" }
+    requirements: { _method: post|delete }

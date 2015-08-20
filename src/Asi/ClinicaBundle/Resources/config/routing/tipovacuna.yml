@@ -1,0 +1,30 @@
+tipovacuna:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Tipovacuna:index" }
+
+tipovacuna_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Tipovacuna:show" }
+
+tipovacuna_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Tipovacuna:new" }
+
+tipovacuna_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Tipovacuna:create" }
+    requirements: { _method: post }
+
+tipovacuna_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Tipovacuna:edit" }
+
+tipovacuna_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Tipovacuna:update" }
+    requirements: { _method: post|put }
+
+tipovacuna_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Tipovacuna:delete" }
+    requirements: { _method: post|delete }

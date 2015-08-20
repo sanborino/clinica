@@ -1,0 +1,69 @@
+Asi\ClinicaBundle\Entity\Detallefactura:
+    type: entity
+    table: detalleFactura
+    repositoryClass: Asi\ClinicaBundle\Entity\DetallefacturaRepository
+    indexes:
+        fk_serv_detserv_idx:
+            columns:
+                - idServicio
+        fk_fact_detserv_idx:
+            columns:
+                - idFactura
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        precio:
+            type: decimal
+            nullable: true
+            precision: 6
+            scale: 2
+            comment: ''
+        descuento:
+            type: decimal
+            nullable: true
+            precision: 5
+            scale: 2
+            comment: ''
+        cantidad:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+        comentario:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+        facturado:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '1'
+    manyToOne:
+        idservicio:
+            targetEntity: Servicio
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idServicio:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idfactura:
+            targetEntity: Factura
+            cascade: {  }
+            mappedBy: null
+            inversedBy: detallefactura
+            joinColumns:
+                idFactura:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,30 @@
+tipopatologia:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Tipopatologia:index" }
+
+tipopatologia_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Tipopatologia:show" }
+
+tipopatologia_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Tipopatologia:new" }
+
+tipopatologia_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Tipopatologia:create" }
+    requirements: { _method: post }
+
+tipopatologia_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Tipopatologia:edit" }
+
+tipopatologia_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Tipopatologia:update" }
+    requirements: { _method: post|put }
+
+tipopatologia_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Tipopatologia:delete" }
+    requirements: { _method: post|delete }

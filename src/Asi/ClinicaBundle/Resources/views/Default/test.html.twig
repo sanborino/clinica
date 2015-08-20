@@ -1,0 +1,17 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+	<h3>Mostrando tipos de patolog&iacute;as:</h3>
+	
+	<table style="width: 400;">
+		{% for aPatologia in aPatologias %}
+			<tr>
+				<td>{{ aPatologia.getId() }}</td>
+				<td>{{ aPatologia.getNomTpoPato() }}</td>
+			</tr>
+		{% endfor %}
+	</table>
+
+{% endblock %}
+
+

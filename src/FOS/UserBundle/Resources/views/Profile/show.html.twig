@@ -1,0 +1,15 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+
+<div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">MI PERFIL</h3>
+                    
+                    </div> <!-- end content-module-heading -->
+<div class="content-module-main" style="display: block;">
+
+{% include "FOSUserBundle:Profile:show_content.html.twig" %}
+{% endblock content %}

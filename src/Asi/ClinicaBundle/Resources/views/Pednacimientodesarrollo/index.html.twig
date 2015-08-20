@@ -1,0 +1,84 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+    <div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">CAPTURA DE PEDIATRIA NACIMIENTO DESARRROLLO</h3>
+                        <span class="fr expand-collapse-text" style="display: block;">Click para colapsar</span>
+                        <span class="fr expand-collapse-text initial-expand" style="display: none;">Click para expandir</span>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block;">
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Edad gestacional</th>
+                <th>Condicion de nacimiento</th>
+                <th>Cianosis</th>
+                <th>Convulsiones</th>
+                <th>Ictericia</th>
+                <th>Parto comentario</th>
+                <th>Peso de nacimiento</th>
+                <th>Alimentacion</th>
+                <th>Sesento</th>
+                <th>Camino</th>
+                <th>Separo</th>
+                <th>Primeras palabras</th>
+                <th>Primer diente</th>
+                <th>Frases cortas</th>
+                <th>Control intestinal</th>
+                <th>Obstetra</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('pednacimientodesarrollo_edit', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">{{ entity.id }}</a></td>
+                <td>{{ entity.edadgestacional }}</td>
+                <td>{{ entity.condicionnacimiento }}</td>
+                <td>{{ entity.cianosis }}</td>
+                <td>{{ entity.convulsiones }}</td>
+                <td>{{ entity.ictericia }}</td>
+                <td>{{ entity.partocomentario }}</td>
+                <td>{{ entity.pesonacimiento }}</td>
+                <td>{{ entity.alimentacion }}</td>
+                <td>{{ entity.sesento }}</td>
+                <td>{{ entity.camino }}</td>
+                <td>{{ entity.separo }}</td>
+                <td>{{ entity.primeraspalabras }}</td>
+                <td>{{ entity.primerdiente }}</td>
+                <td>{{ entity.frasescortas }}</td>
+                <td>{{ entity.controlintestinal }}</td>
+                <td>{{ entity.obstetra }}</td>
+                <td>
+                <ul>
+                <a href="{{ path('pednacimientodesarrollo_edit', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">
+                {% image '@AsiClinicaBundle/Resources/public/img/actions-edit.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}                
+                </a>
+
+                <a href="{{ path('pednacimientodesarrollo_show', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">
+                {% image '@AsiClinicaBundle/Resources/public/img/actions-delete.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}
+                </a>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <a class="round button blue text-upper small-button" href="{{ path('pednacimientodesarrollo_new') }}" onclick= "Popup.showModal('modal');return false;">
+    CREAR NUEVA ENTRADA
+            {% image '@AsiClinicaBundle/Resources/public/img/ic_right.png' %}
+            <img src="{{ asset_url }}" />
+            {% endimage %}
+    </a>
+    {% endblock %}

@@ -1,0 +1,51 @@
+Asi\ClinicaBundle\Entity\Log:
+    type: entity
+    table: log
+    indexes:
+        fk_usuario_log_idx:
+            columns:
+                - idUsuario
+        fk_pantalla_log_idx:
+            columns:
+                - idPantalla
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        fechahora:
+            type: datetime
+            nullable: false
+            comment: ''
+            column: fechaHora
+        accion:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+            comment: ''
+    manyToOne:
+        idusuario:
+            targetEntity: Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idUsuario:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idpantalla:
+            targetEntity: Pantalla
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idPantalla:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

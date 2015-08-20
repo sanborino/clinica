@@ -1,0 +1,48 @@
+Asi\ClinicaBundle\Entity\Examen:
+    type: entity
+    table: examen
+    repositoryClass: Asi\ClinicaBundle\Entity\ExamenRepository
+    indexes:
+        id_examen_tipo_examen1_idx:
+            columns:
+                - idTipoExamen
+    uniqueConstraints:
+        id_serv_UNIQUE:
+            columns:
+                - idServicio
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        estadoactivacion:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '1'
+            column: estadoActivacion
+    manyToOne:
+        idtipoexamen:
+            targetEntity: Tipoexamen
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idTipoExamen:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idservicio:
+            targetEntity: Servicio
+            cascade: [persist]
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idServicio:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

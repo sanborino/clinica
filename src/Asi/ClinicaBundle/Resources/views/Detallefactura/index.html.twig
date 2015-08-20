@@ -1,0 +1,62 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+    <div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">CAPTURA DE DETALLE DE FACTURA</h3>
+                        <span class="fr expand-collapse-text" style="display: block;">Click para colapsar</span>
+                        <span class="fr expand-collapse-text initial-expand" style="display: none;">Click para expandir</span>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block;">
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Precio</th>
+                <th>Descuento</th>
+                <th>Cantidad</th>
+                <th>Comentario</th>
+                <th>Facturado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('detallefactura_edit', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">{{ entity.id }}</a></td>
+                <td>{{ entity.precio }}</td>
+                <td>{{ entity.descuento }}</td>
+                <td>{{ entity.cantidad }}</td>
+                <td>{{ entity.comentario }}</td>
+                <td>{{ entity.facturado }}</td>
+                <td>
+                <ul>
+                <a href="{{ path('detallefactura_edit', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">
+                {% image '@AsiClinicaBundle/Resources/public/img/actions-edit.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}                
+                </a>
+
+                <a href="{{ path('detallefactura_show', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">
+                {% image '@AsiClinicaBundle/Resources/public/img/actions-delete.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}
+                </a>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <a class="round button blue text-upper small-button" href="{{ path('detallefactura_new') }}" onclick= "Popup.showModal('modal');return false;">
+    CREAR NUEVA ENTRADA
+            {% image '@AsiClinicaBundle/Resources/public/img/ic_right.png' %}
+            <img src="{{ asset_url }}" />
+            {% endimage %}
+    </a>
+    {% endblock %}

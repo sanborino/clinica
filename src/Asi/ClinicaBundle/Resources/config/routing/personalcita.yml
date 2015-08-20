@@ -1,0 +1,30 @@
+personalcita:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Personalcita:index" }
+
+personalcita_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Personalcita:show" }
+
+personalcita_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Personalcita:new" }
+
+personalcita_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Personalcita:create" }
+    requirements: { _method: post }
+
+personalcita_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Personalcita:edit" }
+
+personalcita_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Personalcita:update" }
+    requirements: { _method: post|put }
+
+personalcita_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Personalcita:delete" }
+    requirements: { _method: post|delete }

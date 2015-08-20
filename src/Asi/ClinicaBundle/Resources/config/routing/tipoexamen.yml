@@ -1,0 +1,30 @@
+tipoexamen:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Tipoexamen:index" }
+
+tipoexamen_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Tipoexamen:show" }
+
+tipoexamen_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Tipoexamen:new" }
+
+tipoexamen_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Tipoexamen:create" }
+    requirements: { _method: post }
+
+tipoexamen_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Tipoexamen:edit" }
+
+tipoexamen_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Tipoexamen:update" }
+    requirements: { _method: post|put }
+
+tipoexamen_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Tipoexamen:delete" }
+    requirements: { _method: post|delete }

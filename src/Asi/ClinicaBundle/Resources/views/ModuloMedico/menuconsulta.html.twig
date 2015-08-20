@@ -1,0 +1,124 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+	<style type="text/css">
+		a.lilink{
+			float:left;
+			clear:both;
+			margin-bottom:4%;
+			width: 30%;
+			font-size: 12px;
+			font-weight: bold;
+		}
+
+	.red {
+		background-color: #E8234E;
+		color:white;
+		cursor:default;
+
+
+	}
+	.red:hover {
+		background-color: #B30027;
+		color: white;
+		cursor:default;
+	}
+
+	.green {
+		background-color: #20D600;
+		color:white;
+	}
+	.green:hover {
+		background-color: #168A01;
+		color: white;
+	}
+
+	</style>
+    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">AGREGAR DATOS DE CONSULTA</h3>
+                        <span class="fr expand-collapse-text" style="display: block;">Click para colapsar</span>
+                        <span class="fr expand-collapse-text initial-expand" style="display: none;">Click para expandir</span>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block; overflow:hidden">
+    	<a class="round button small-button image-right ic-right-arrow lilink 
+    	{% if estadoitems == 0 %}
+			red" disabled>
+    		No existe examen fisico para esta especialidad.
+		
+		{% elseif estadoitems == 1 %}
+			blue" href="{{ path('modulomedico_consulta_examenfisico', { 'id' : id}) }}">
+			Ingresar datos de examen f&iacute;sico.
+		{% else %}
+			green" href="{{ path('modulomedico_consulta_examenfisico', { 'id' : id}) }}">
+			Actualizar datos de examen f&iacute;sico.
+		{% endif %}
+		</a>
+
+	
+		<a class="round button small-button image-right ic-right-arrow lilink
+		{% if estadopatologias == 0 %}
+		red" disabled>
+			No se han agregado patolog&iacute;as al sistema.
+		{% elseif estadopatologias == 1 %}
+			blue" href="{{ path('modulomedico_consulta_patologias', { 'id' : id}) }}">
+			Ingresar patolog&iacute;as encontradas.
+		{% else %}
+			green" href="{{ path('modulomedico_consulta_patologias', { 'id' : id}) }}">
+			Actualizar patolog&iacute;as encontradas.
+		{% endif %}
+		</a>
+
+
+		<a class="round button blue small-button image-right ic-right-arrow lilink
+		{% if estadoinmunizaciones == 0 %}
+		red" disabled>
+			No se han agregado vacunas al sistema.
+		{% elseif estadoinmunizaciones == 1 %}
+			blue" href="{{ path('modulomedico_consulta_inmunizaciones', { 'id' : id}) }}">
+			Ingresar vacunas aplicadas.
+		{% else %}
+			green" href="{{ path('modulomedico_consulta_inmunizaciones', { 'id' : id}) }}">
+			Actualizar vacunas aplicadas.
+		{% endif %}
+		</a>
+
+		<a class="round button blue small-button image-right ic-right-arrow lilink
+		{% if estadoexamenes == 0 %}
+		red" disabled>
+			No se han agregado examenes al sistema.
+		{% elseif estadoexamenes == 1 %}
+			blue" href="{{ path('modulomedico_consulta_examenes', { 'id' : id}) }}">
+			Ingresar ex&aacute;menes realizados.
+		{% else %}
+			green" href="{{ path('modulomedico_consulta_examenes', { 'id' : id}) }}">
+			Actualizar exámenes realizados.
+		{% endif %}
+		</a>
+
+		<a class="round button blue small-button image-right ic-right-arrow lilink
+		{% if estadorecetas == 0 %}
+		red" disabled>
+			No se han agregado medicamentos al sistema.
+		{% elseif estadorecetas == 1 %}
+			blue" href="{{ path('modulomedico_consulta_receta', { 'id' : id}) }}">
+			Ingresar recetas de medicamentos.
+		{% else %}
+			green" href="{{ path('modulomedico_consulta_receta', { 'id' : id}) }}">
+			Actualizar recetas de medicamentos.
+		{% endif %}
+		</a>
+
+
+		<a class="round button blue small-button image-right ic-right-arrow" style="float:left; clear:both; margin-top:2%" href="{{ path('modulomedico_consulta_confirmar', { 'id' : id}) }}">
+		    Siguiente
+		</a>
+	    <a class="round button blue small-button" style="float:left; clear:both; margin-top:1%" href="{{ path('modulomedico_consulta', { 'id' : id}) }}">
+            {% image '@AsiClinicaBundle/Resources/public/img/ic_left.png' %}
+            <img src="{{ asset_url }}" />
+            {% endimage %}
+            Regresar
+	    </a>
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+
+    <div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">EDITAR O ELIMINAR PACIENTE</h3>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block;">
+        {% set link = 'paciente' %}
+        {% set otrolink = 'paciente_edit' %}
+    {% if app.security.getToken().getUser().getIdtipousuario().getNombre() == 'Recepcionista'  %}
+        {% set link='recepcion_expediente' %}
+        {% set otrolink = 'recepcion_paciente_edit' %}
+    {% endif %}
+    <table class="record_properties">
+        
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Dui</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Fecha de nacimiento</th>
+                <th>Telefono</th>
+                <th>Movil</th>
+                <th>Referido por</th>
+                <th>Lugar de nacimiento</th>
+                <th>Fecha de creacion</th>
+                <th>Direccion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>{{ entity.id }}</td>
+                <td>{{ entity.dui }}</td>
+                <td>{{ entity.nombres }}</td>
+                <td>{{ entity.apellidos }}</td>
+                <td>{{ entity.fechanacimiento|date('Y-m-d') }}</td>
+                <td>{{ entity.telefono }}</td>
+                <td>{{ entity.movil }}</td>
+                <td>{{ entity.referidopor }}</td>
+                <td>{{ entity.lugarnacimiento }}</td>
+                <td>{{ entity.fechacreacion|date('Y-m-d') }}</td>
+                <td>{{ entity.direccion }}</td>
+                <td>
+                <a href="{{ path(otrolink, { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">
+                {% image '@AsiClinicaBundle/Resources/public/img/actions-edit.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}                
+                </a>
+                {{ form(delete_form) }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <ul class="record_actions">
+    <a class="round button blue text-upper small-button" href="{{ path(link) }}" onclick= "Popup.showModal('modal');return false;">
+            {% image '@AsiClinicaBundle/Resources/public/img/ic_left.png' %}
+            <img src="{{ asset_url }}" />
+            {% endimage %}
+            REGRESAR
+    </a>
+    </ul>
+{% endblock %}

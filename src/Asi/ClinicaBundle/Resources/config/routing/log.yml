@@ -1,0 +1,30 @@
+log:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Log:index" }
+
+log_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Log:show" }
+
+log_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Log:new" }
+
+log_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Log:create" }
+    requirements: { _method: post }
+
+log_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Log:edit" }
+
+log_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Log:update" }
+    requirements: { _method: post|put }
+
+log_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Log:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,94 @@
+Asi\ClinicaBundle\Entity\Consulta:
+    type: entity
+    table: consulta
+    repositoryClass: Asi\ClinicaBundle\Entity\ConsultaRepository
+    uniqueConstraints:
+        fk_cita_UNIQUE:
+            columns:
+                - idCita
+        id_fact_UNIQUE:
+            columns:
+                - idFactura
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        motivoconsulta:
+            type: string
+            nullable: true
+            length: 150
+            fixed: false
+            comment: ''
+            column: motivoConsulta
+        diagnostico:
+            type: string
+            nullable: true
+            length: 300
+            fixed: false
+            comment: ''
+        sintomas:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        comentario:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        fecha:
+            type: date
+            nullable: false
+            comment: ''
+        hora:
+            type: time
+            nullable: false
+            comment: ''
+    oneToOne:
+        idcita:
+            targetEntity: Cita
+            cascade: [persist]
+            mappedBy: null
+            inversedBy: idconsulta
+            joinColumns:
+                idCita:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idfactura:
+            targetEntity: Factura
+            cascade: {  }
+            mappedBy: null
+            inversedBy: idconsulta
+            joinColumns:
+                idFactura:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToOne:
+        idmedico:
+            targetEntity: Medico
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idMedico:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToMany:
+        consultaitem:
+            targetEntity: Consultaitem
+            mappedBy: idconsulta
+        diagnosticopatologia:
+            targetEntity: Diagnosticopatologia
+            mappedBy: idconsulta
+        inmunizacion: 
+            targetEntity: Inmunizacion
+            mappedBy: idconsulta
+    lifecycleCallbacks: {  }

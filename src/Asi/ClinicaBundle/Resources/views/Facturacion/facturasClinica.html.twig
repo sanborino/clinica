@@ -1,0 +1,60 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+
+
+<div class="content-module">
+                
+<div class="content-module-heading cf">
+                    
+    <h3 class="fl">FACTURAS PENDIENTES </h3>
+    <span class="fr expand-collapse-text" style="display: block;">Click para colapsar</span>
+    <span class="fr expand-collapse-text initial-expand" style="display: none;">Click para expandir</span>
+                        
+    </div> <!-- end content-module-heading -->
+
+    <div class="content-module-main" style="display: block;">
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th> 
+                <th>Clinica </th>
+                <th>Titular</th>
+                <th>Dui</th>
+                <th>Nit</th>
+                <th>Fecha y hora de emision</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                
+                <td>{{ entity.getIdfactura().id }}</td>
+                <td> {{entity.getIdcita().getIdDisponibilidad().getIdclinica().nombre}}
+                <td>{{ entity.getIdfactura().titular }}</td>
+                <td>{{ entity.getIdfactura().dui }}</td>
+                <td>{{ entity.getIdfactura().nit }}</td>
+                <td>{% if entity.getIdfactura().fechahoraemision %}{{ entity.getIdfactura().fechahoraemision|date('Y-m-d H:i') }}{% endif %}</td>
+                <td>
+                <ul>
+                <a href="{{ path('recepcion_factura_edit', { 'id': entity.getIdfactura().id }) }}" onclick= "Popup.showModal('modal');return false;">
+                {% image '@AsiClinicaBundle/Resources/public/img/actions-edit.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}                
+                </a>
+
+                <a href="{{ path('factura_pdf', { 'id': entity.getIdfactura().id }) }}">
+                {% image '@AsiClinicaBundle/Resources/public/img/icon_pdf.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}
+                </a>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

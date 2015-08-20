@@ -1,0 +1,45 @@
+Asi\ClinicaBundle\Entity\Disponibilidad:
+    type: entity
+    table: disponibilidad
+    repositoryClass: Asi\ClinicaBundle\Entity\DisponibilidadRepository
+    indexes:
+        fk_agenda_clinica1_idx:
+            columns:
+                - idClinica
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        hora:
+            type: time
+            nullable: false
+            comment: ''
+        fecha:
+            type: date
+            nullable: false
+            comment: ''
+        disponibilidad:
+            type: boolean
+            nullable: false
+            comment: ''
+    manyToOne:
+        idclinica:
+            targetEntity: Clinica
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idClinica:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToMany:
+        citas:
+            targetEntity: Cita
+            mappedBy: idDisponibilidad
+    lifecycleCallbacks: {  }

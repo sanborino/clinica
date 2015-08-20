@@ -1,0 +1,41 @@
+Asi\ClinicaBundle\Entity\Patologia:
+    type: entity
+    table: patologia
+    repositoryClass: Asi\ClinicaBundle\Entity\PatologiaRepository
+    indexes:
+        id_patologia_tipo_patologia_idx:
+            columns:
+                - idTipoPatologia
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+        descripcion:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: ''
+    manyToOne:
+        idtipopatologia:
+            targetEntity: Tipopatologia
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idTipoPatologia:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

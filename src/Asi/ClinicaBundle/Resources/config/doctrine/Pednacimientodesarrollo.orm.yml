@@ -1,0 +1,134 @@
+Asi\ClinicaBundle\Entity\Pednacimientodesarrollo:
+    type: entity
+    table: pedNacimientoDesarrollo
+    indexes:
+        id_ped_nacimiento_desarrollo_paciente1_idx:
+            columns:
+                - idPaciente
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        edadgestacional:
+            type: string
+            nullable: true
+            length: 10
+            fixed: false
+            comment: ''
+            column: edadGestacional
+        condicionnacimiento:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: condicionNacimiento
+        cianosis:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+        convulsiones:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+        ictericia:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+        partocomentario:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: partoComentario
+        pesonacimiento:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: pesoNacimiento
+        alimentacion:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+        sesento:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: seSento
+        camino:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+        separo:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: seParo
+        primeraspalabras:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: primerasPalabras
+        primerdiente:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: primerDiente
+        frasescortas:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: frasesCortas
+        controlintestinal:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: controlIntestinal
+        obstetra:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+    oneToOne:
+        idpaciente:
+            targetEntity: Paciente
+            cascade: {  }
+            mappedBy: null
+            inversedBy: pednacimientodesarrollo
+            joinColumns:
+                idPaciente:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

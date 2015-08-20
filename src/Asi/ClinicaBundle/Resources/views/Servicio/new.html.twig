@@ -1,0 +1,47 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+
+    <script type="text/javascript">
+        $(document).on('change', '#servicio_select', function(){
+            $('#servicio_form').hide('slow').empty();
+            if ($(this).val()) {
+                $.post( "{{path('servicio_form')}}", {id:$(this).val()}, function( form ) {
+                    $('#servicio_form').html(form).show('slow');
+                });
+            };
+        });
+    </script>
+
+    <div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">CREAR SERVICIO</h3>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block;">
+
+        <label>Tipo de Servicio : </label>
+        <select id="servicio_select">
+            <option value="">Seleccionar...</option>
+        {% for entity in entities %}
+            <option value="{{entity.id}}">{{entity.nombre}}</option>
+        {% endfor %}
+        </select>
+        
+        <div id="servicio_form" style="display:none">
+            
+        </div>
+
+
+<ul class="record_actions">
+    <a class="round button blue text-upper small-button" href="{{ path('servicio') }}" onclick= "Popup.showModal('modal');return false;">
+            {% image '@AsiClinicaBundle/Resources/public/img/ic_left.png' %}
+            <img src="{{ asset_url }}" />
+            {% endimage %}
+            REGRESAR
+    </a>
+</ul>
+
+{% endblock %}

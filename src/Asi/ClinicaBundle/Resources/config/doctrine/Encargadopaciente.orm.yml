@@ -1,0 +1,50 @@
+Asi\ClinicaBundle\Entity\Encargadopaciente:
+    type: entity
+    table: encargadoPaciente
+    indexes:
+        id_encargado_paciente_paciente1_idx:
+            columns:
+                - idPaciente
+        id_encargado_paciente_encargado1_idx:
+            columns:
+                - idEncargado
+    uniqueConstraints:
+        unique_encargado_paciente:
+            columns:
+                - idPaciente
+                - idEncargado
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        parentesco:
+            type: string
+            nullable: false
+            length: 15
+            fixed: false
+            comment: ''
+    manyToOne:
+        idpaciente:
+            targetEntity: Paciente
+            cascade: [persist]
+            mappedBy: null
+            inversedBy: encargadopaciente
+            joinColumns:
+                idPaciente:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idencargado:
+            targetEntity: Encargado
+            cascade: [persist]
+            inversedBy: encargadopaciente
+            joinColumns:
+                idEncargado:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,40 @@
+registropaciente:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Registropaciente:index" }
+
+registropaciente_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Registropaciente:show" }
+
+registropaciente_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Registropaciente:new" }
+
+registropaciente_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Registropaciente:create" }
+    requirements: { _method: post }
+
+registropaciente_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Registropaciente:edit" }
+
+registropaciente_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Registropaciente:update" }
+    requirements: { _method: post|put }
+
+registropaciente_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Registropaciente:delete" }
+    requirements: { _method: post|delete }
+
+registropaciente_encargado:
+    path:     /encargado
+    defaults: { _controller: "AsiClinicaBundle:Registropaciente:encargado" }
+
+registropaciente_encargadocrear:
+    path:     /encargadocrear
+    defaults: { _controller: "AsiClinicaBundle:Registropaciente:createEncargado" }
+    requirements: { _method: post }
+

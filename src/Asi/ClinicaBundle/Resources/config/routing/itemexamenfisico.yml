@@ -1,0 +1,30 @@
+itemexamenfisico:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Itemexamenfisico:index" }
+
+itemexamenfisico_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Itemexamenfisico:show" }
+
+itemexamenfisico_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Itemexamenfisico:new" }
+
+itemexamenfisico_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Itemexamenfisico:create" }
+    requirements: { _method: post }
+
+itemexamenfisico_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Itemexamenfisico:edit" }
+
+itemexamenfisico_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Itemexamenfisico:update" }
+    requirements: { _method: post|put }
+
+itemexamenfisico_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Itemexamenfisico:delete" }
+    requirements: { _method: post|delete }

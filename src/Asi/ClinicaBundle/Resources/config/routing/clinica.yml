@@ -1,0 +1,30 @@
+clinica:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Clinica:index" }
+
+clinica_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Clinica:show" }
+
+clinica_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Clinica:new" }
+
+clinica_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Clinica:create" }
+    requirements: { _method: post }
+
+clinica_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Clinica:edit" }
+
+clinica_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Clinica:update" }
+    requirements: { _method: post|put }
+
+clinica_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Clinica:delete" }
+    requirements: { _method: post|delete }

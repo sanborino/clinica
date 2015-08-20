@@ -1,0 +1,26 @@
+Asi\ClinicaBundle\Entity\Tipomedicamento:
+    type: entity
+    table: tipoMedicamento
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+        estadoactivacion:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '1'
+            column: estadoActivacion
+    lifecycleCallbacks: {  }

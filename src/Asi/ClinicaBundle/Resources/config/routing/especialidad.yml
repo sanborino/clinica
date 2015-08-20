@@ -1,0 +1,30 @@
+especialidad:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Especialidad:index" }
+
+especialidad_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Especialidad:show" }
+
+especialidad_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Especialidad:new" }
+
+especialidad_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Especialidad:create" }
+    requirements: { _method: post }
+
+especialidad_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Especialidad:edit" }
+
+especialidad_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Especialidad:update" }
+    requirements: { _method: post|put }
+
+especialidad_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Especialidad:delete" }
+    requirements: { _method: post|delete }

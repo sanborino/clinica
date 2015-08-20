@@ -1,0 +1,46 @@
+Asi\ClinicaBundle\Entity\Usuario:
+    type: entity
+    table: usuario
+    indexes:
+        id_usuario_tipo_usuario1_idx:
+            columns:
+                - idTipoUsuario
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 500
+            fixed: false
+            comment: ''
+        password:
+            type: string
+            nullable: false
+            length: 500
+            fixed: false
+            comment: ''
+        estadoactivacion:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '1'
+            column: estadoActivacion
+    manyToOne:
+        idtipousuario:
+            targetEntity: Tipousuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idTipoUsuario:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

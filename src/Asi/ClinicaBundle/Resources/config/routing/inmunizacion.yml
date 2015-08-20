@@ -1,0 +1,30 @@
+inmunizacion:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Inmunizacion:index" }
+
+inmunizacion_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Inmunizacion:show" }
+
+inmunizacion_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Inmunizacion:new" }
+
+inmunizacion_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Inmunizacion:create" }
+    requirements: { _method: post }
+
+inmunizacion_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Inmunizacion:edit" }
+
+inmunizacion_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Inmunizacion:update" }
+    requirements: { _method: post|put }
+
+inmunizacion_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Inmunizacion:delete" }
+    requirements: { _method: post|delete }

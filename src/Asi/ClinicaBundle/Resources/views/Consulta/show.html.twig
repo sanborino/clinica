@@ -1,0 +1,55 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+<div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">EDITAR O ELIMINAR CONSULTA</h3>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block;">
+
+    <table class="record_properties">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Motivo de consulta</th>
+                <th>Diagnostico</th>
+                <th>Sintomas</th>
+                <th>Comentario</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ entity.id }}</td>
+                <td>{{ entity.motivoconsulta }}</td>
+                <td>{{ entity.diagnostico }}</td>
+                <td>{{ entity.sintomas }}</td>
+                <td>{{ entity.comentario }}</td>
+                <td>{{ entity.fecha|date('Y-m-d') }}</td>
+                <td>{{ entity.hora|date('H:i') }}</td>
+                <td>
+                <a href="{{ path('consulta_edit', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">
+                {% image '@AsiClinicaBundle/Resources/public/img/actions-edit.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}                
+                </a>
+                {{ form(delete_form) }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions">
+    <a class="round button blue text-upper small-button" href="{{ path('consulta') }}" onclick= "Popup.showModal('modal');return false;">
+            {% image '@AsiClinicaBundle/Resources/public/img/ic_left.png' %}
+            <img src="{{ asset_url }}" />
+            {% endimage %}
+            REGRESAR
+    </a>
+    </ul>
+{% endblock %}

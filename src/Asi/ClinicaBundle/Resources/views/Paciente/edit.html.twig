@@ -1,0 +1,29 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+    <div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">EDITAR PACIENTE</h3>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block;">
+
+    {{ form(edit_form) }}
+    {% if app.security.getToken().getUser().getIdtipousuario().getNombre() == 'Administrador'  %}{{ form(delete_form) }}{% endif %}
+
+    {% set link = 'paciente' %}
+    {% if app.security.getToken().getUser().getIdtipousuario().getNombre() == 'Recepcionista'  %}
+        {% set link='recepcion_expediente' %}
+    {% endif %}
+
+    <ul class="record_actions">
+	<a class="round button blue text-upper small-button" href="{{ path(link) }}" onclick= "Popup.showModal('modal');return false;">
+            {% image '@AsiClinicaBundle/Resources/public/img/ic_left.png' %}
+            <img src="{{ asset_url }}" />
+            {% endimage %}
+            REGRESAR
+    </a>
+	</ul>
+{% endblock %}

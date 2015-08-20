@@ -1,0 +1,171 @@
+asi_clinica_medico:
+    path:     /
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:index }
+
+modulomedico_agenda:
+    path:     /agenda
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:mostrarAgenda }
+
+modulomedico_historial:
+    path:     /historial
+    defaults: { _controller: AsiClinicaBundle:ModuloHistorial:index }
+
+modulomedico_historial_pacientes:
+    path:     /historial/paciente
+    defaults: { _controller: AsiClinicaBundle:ModuloHistorial:pacientes }
+
+modulomedico_historial_pacientes_datos:
+    path:     /historial/paciente/{id}
+    defaults: { _controller: AsiClinicaBundle:ModuloHistorial:datosPaciente }
+
+modulomedico_historial_consultas:
+    path:     /historial/consulta
+    defaults: { _controller: AsiClinicaBundle:ModuloHistorial:consultas }
+
+modulomedico_historial_consultas_datos:
+    path:     /historial/consulta/{id}
+    defaults: { _controller: AsiClinicaBundle:ModuloHistorial:datosConsulta }
+
+modulomedico_historial_datosfactura:
+    path:     /historial/consulta/factura/{id}
+    defaults: { _controller: AsiClinicaBundle:ModuloHistorial:datosFactura }
+
+modulomedico_consulta:
+    path:     /{id}/consulta
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:consulta }
+    requirements: { _method: get }
+
+modulomedico_consulta_update:
+    path:     /{id}/consultaupdate
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:update }
+    requirements: { _method: post|put }
+
+modulomedico_consulta_menu:
+    path:     /{id}/consulta/menu
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:menuConsulta }
+    requirements: { _method: get }
+
+modulomedico_consulta_examenfisico:
+    path:     /{id}/consulta/examenfisico
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:examenFisico }
+    requirements: { _method: get }
+
+modulomedico_consulta_examenfisico_create:
+    path:     /{id}/consulta/examenfisico/create
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:examenFisicoCreate }
+    requirements: { _method: post }
+
+modulomedico_consulta_examenfisico_update:
+    path:     /{id}/consulta/examenfisico/update
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:examenFisicoUpdate }
+    requirements: { _method: post|put }
+
+modulomedico_consulta_patologias:
+    path:     /{id}/consulta/patologias
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:consultaPatologias }
+    requirements: { _method: get }
+
+modulomedico_consulta_patologias_create:
+    path:     /{id}/consulta/patologias/create
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:crearDiagnosticoPatologia }
+    requirements: { _method: post }
+
+modulomedico_consulta_patologias_edit:
+    path:     /{id}/consulta/patologias/{idpatologia}/edit
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:editPatologia }
+    requirements: { _method: get }
+
+modulomedico_consulta_patologias_update:
+    path:     /{id}/consulta/patologias/{idpatologia}/update
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:updatePacientePatologia }
+    requirements: { _method: post|put }
+
+modulomedico_consulta_patologias_delete:
+    path:     /{id}/consulta/patologias/{idpatologia}/delete
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:deletePacientePatologia }
+    requirements: { _method: post|delete }
+
+modulomedico_consulta_inmunizaciones:
+    path:     /{id}/consulta/inmunizaciones
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:consultaInmunizaciones }
+    requirements: { _method: get }
+
+modulomedico_consulta_inmunizaciones_create:
+    path:     /{id}/consulta/inmunizaciones/create
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:crearInmunizacion }
+    requirements: { _method: post }
+
+modulomedico_consulta_inmunizaciones_edit:
+    path:     /{id}/consulta/inmunizaciones/{idinmunizacion}/edit
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:editInmunizacion }
+    requirements: { _method: get }
+
+modulomedico_consulta_inmunizaciones_update:
+    path:     /{id}/consulta/inmunizaciones/{idinmunizacion}/update
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:updateInmunizacion }
+    requirements: { _method: post|put }
+
+modulomedico_consulta_inmunizaciones_delete:
+    path:     /{id}/consulta/inmunizaciones/{idinmunizacion}/delete
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:deleteInmunizacion }
+    requirements: { _method: post|delete }
+
+modulomedico_consulta_examenes:
+    path:     /{id}/consulta/examenes
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:consultaExamenes }
+    requirements: { _method: get }
+
+modulomedico_consulta_examenes_create:
+    path:     /{id}/consulta/examenes/create
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:crearExamen }
+    requirements: { _method: post }
+
+modulomedico_consulta_examenes_edit:
+    path:     /{id}/consulta/examenes/{idexamen}/edit
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:editExamen }
+    requirements: { _method: get }
+
+modulomedico_consulta_examenes_update:
+    path:     /{id}/consulta/examenes/{idexamen}/update
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:updateExamen }
+    requirements: { _method: post|put }
+
+modulomedico_consulta_examenes_delete:
+    path:     /{id}/consulta/examenes/{idexamen}/delete
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:deleteExamen }
+    requirements: { _method: post|delete }
+
+modulomedico_consulta_receta:
+    path:     /{id}/consulta/receta
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:consultaReceta }
+    requirements: { _method: get }
+
+modulomedico_consulta_receta_create:
+    path:     /{id}/consulta/receta/create
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:crearReceta }
+    requirements: { _method: post }
+
+modulomedico_consulta_receta_edit:
+    path:     /{id}/consulta/receta/{idreceta}/edit
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:editReceta }
+    requirements: { _method: get }
+
+modulomedico_consulta_receta_update:
+    path:     /{id}/consulta/receta/{idreceta}/update
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:updateReceta }
+    requirements: { _method: post|put }
+
+modulomedico_consulta_receta_delete:
+    path:     /{id}/consulta/receta/{idreceta}/delete
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:deleteReceta }
+    requirements: { _method: post|delete }
+
+modulomedico_consulta_confirmar:
+    path:     /{id}/consulta/confirmar
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:consultaConfirmar }
+    requirements: { _method: get }
+
+modulomedico_consulta_finalizar:
+    path:     /{id}/consulta/finalizar
+    defaults: { _controller: AsiClinicaBundle:ModuloMedico:consultaFinalizar }
+    requirements: { _method: get }

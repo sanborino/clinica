@@ -1,0 +1,11 @@
+reporte_citas_fecha:
+    path:     /reporte_citas_fecha
+    defaults: { _controller: "AsiClinicaBundle:ModuloReportes:citasFecha" }
+
+form_reporte_citas_fecha:
+    path:     /form_reporte_citas_fecha
+    defaults: { _controller: "AsiClinicaBundle:ModuloReportes:formularioFecha" }
+
+factura_pdf:
+    path:     /factura_pdf/{id}
+    defaults: { _controller: "AsiClinicaBundle:Facturacion:reporte" }

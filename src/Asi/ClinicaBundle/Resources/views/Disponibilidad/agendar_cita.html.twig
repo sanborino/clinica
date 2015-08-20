@@ -1,0 +1,107 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+    <script type="text/javascript">
+    $(document).on('change', '#especialidades_disponibles', function(){
+        $('#div_clinicas').hide('fast', function(){
+            $(this).empty();
+        });
+        $('#tabla_disponibilidades').hide('fast', function(){
+            $('#tabla_body').empty();    
+        });
+        if ($(this).val()) {
+            $.post( "{{path('cita_clinicas')}}", {id:$(this).val()}, function( clinicas ) {
+                console.log(clinicas);
+                var select = "<label>Seleccione un consultorio : </label><select id='clinicas_disponibles'><option value=''>Seleccionar...</option>";
+                for (var i = 0; i < clinicas.length; i++) {
+                    select+="<option value='"+ clinicas[i]['id'] +"'>"+clinicas[i]['nombre']+"</option>";
+                };
+                select += "/<select>"
+                $('#div_clinicas').html(select).show('fast');
+            });
+        };
+    });
+
+    $(document).on('change', '#clinicas_disponibles', function(){
+        $('#tabla_disponibilidades').hide('fast', function(){
+            $('#tabla_body').empty();    
+        });
+        
+        if ($(this).val()) {
+            $.post( "{{path('cita_disponibilidades')}}", {id:$(this).val()}, function( disponibilidades ) {
+                console.log(disponibilidades);
+                var tablarows = '<tr><td colspan="5" style="font-size:16px">No existen horarios para este consultorio.</td></tr>';
+                if (disponibilidades) {
+                    var tablarows = "";
+                    for (var i = 0; i < disponibilidades.length; i++) {
+                        tablarows+='<tr style="background-color:'+getColor(disponibilidades[i]['disponibilidad'])+'"><td>'+disponibilidades[i]['hora']+'</td><td>'+disponibilidades[i]['fecha']+'</td><td>'+disponibilidades[i]['clinica']+'</td><td>'+ getLink(disponibilidades[i]['url']) +'</td></tr>';
+                    };
+                };
+                $('#tabla_body').append(tablarows);
+                $('#tabla_disponibilidades').show('slow');
+
+            });
+        };    
+    });
+
+    function getColor (disponible) {
+        if (disponible) {
+            return '#9BF4AA';
+        } else {
+            return '#FF7171';
+        };
+    }
+
+    function getLink (url) {
+        link="";
+        if (url) {
+            link = "<a href=\""+ url +"\" onclick= \"Popup.showModal('modal');return false;\">{% image '@AsiClinicaBundle/Resources/public/img/confirmation.png' %}<img src=\"{{ asset_url }}\" />{% endimage %}</a>";
+        };
+        return link;
+    }
+
+    </script>
+    
+    <div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">FECHAS Y HORARIOS DISPONIBLES</h3>
+                        <span class="fr expand-collapse-text" style="display: block;">Click para colapsar</span>
+                        <span class="fr expand-collapse-text initial-expand" style="display: none;">Click para expandir</span>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block;">
+    <div>
+        <span style="display:inline-block; background-color:#9BF4AA; width:30px; height:16px;"></span>
+        <p style="display:inline-block;">Disponible</p>
+        <span style="display:inline-block; background-color:#FF7171; width:30px; height:16px;"></span>
+        <p style="display:inline-block;">No Disponible</p>
+    </div>
+    <label>Seleccione una especialidad : </label>
+    <select id="especialidades_disponibles">
+        <option value="">Seleccionar...</option>
+        {% for entity in especialidad %}
+            <option value="{{entity.id}}">{{entity.nombre}}</option>
+        {% endfor %}
+    </select>
+
+    <div id="div_clinicas" style="display:none">
+    </div>
+    <div id="tabla_disponibilidades" style="display:none">
+        <table class="table table-hover" style="width:100%">
+        <thead>
+            <tr>
+                <th style="width:7%">Horario disponible</th>
+                <th>Fecha disponible</th>
+                <th>Consultorio</th>
+                <th>Seleccionar</th>
+            </tr>
+        </thead>
+        <tbody id="tabla_body">
+
+        </tbody>
+    </table>
+    </div>
+
+{% endblock %}

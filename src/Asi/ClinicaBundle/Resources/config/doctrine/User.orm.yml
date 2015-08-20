@@ -1,0 +1,8 @@
+Asi\ClinicaBundle\Entity\User:
+    type:  entity
+    table: usuario
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO

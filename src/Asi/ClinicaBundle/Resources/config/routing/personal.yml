@@ -1,0 +1,30 @@
+personal:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Personal:index" }
+
+personal_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Personal:show" }
+
+personal_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Personal:new" }
+
+personal_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Personal:create" }
+    requirements: { _method: post }
+
+personal_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Personal:edit" }
+
+personal_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Personal:update" }
+    requirements: { _method: post|put }
+
+personal_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Personal:delete" }
+    requirements: { _method: post|delete }

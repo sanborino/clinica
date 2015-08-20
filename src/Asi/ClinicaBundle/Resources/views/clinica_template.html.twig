@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		{% image '@AsiClinicaBundle/Resources/public/img/favicon.ico' %}
+ 		<link rel="shortcut icon" href="{{ asset_url }}" />
+ 		{% endimage %}
+
+		<title>Cl&iacute;nica Central</title>
+
+		{% block stylesheets %}
+			{% stylesheets 
+
+			    'bundles/asiclinica/css/jquery.dataTables.css'
+			    'bundles/asiclinica/css/jquery.dataTables_themeroller.css'
+			    '@AsiClinicaBundle/Resources/public/css/familyDroid.css'
+			    'bundles/asiclinica/css/style.css'
+			    
+			   
+				filter='cssrewrite'
+			%}
+    		
+    		<link rel="stylesheet" href="{{ asset_url }}" />
+    		{% endstylesheets %}
+		{% endblock %}
+
+		<!-- <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.4/css/jquery.dataTables.css"> -->
+		<!-- por si acaso -->
+
+		{% block javascripts %}
+			{% javascripts 
+				'@AsiClinicaBundle/Resources/public/js/jquery.min.js'
+			    '@AsiClinicaBundle/Resources/public/js/script.js' 
+			    '@AsiClinicaBundle/Resources/public/js/popup.js'
+			   
+			%}
+			
+			<script type="text/javascript" src="{{ asset_url }}"></script>
+			{% endjavascripts %}
+		{% endblock %}
+
+	<style type="text/css">
+
+	/* Para las tablas */
+    table{
+        table-layout: fixed;
+    }
+    td {
+        word-wrap: break-word;
+    }
+    th{
+        background-color: #428BCA !important;
+        font-weight: normal !important;
+    }
+    </style>
+	</head>
+<body>
+
+	{% include 'AsiClinicaBundle::_header.html.twig' %}
+<div id="content">
+	<div class="page-full-width cf">
+			{% 
+				set side_menus = [
+					
+				
+					{'route' : 'modulomedico_agenda', 'nombre' : 'Agenda Medica' },
+					{'route' : 'cita', 'nombre' : 'Cita' },
+					{'route' : 'recepcion_citas', 'nombre' : 'Citas'},
+					{'route' : 'cita_historial', 'nombre' : 'Cita Historial'},
+					{'route' : 'clinica', 'nombre' : 'Clinica' },
+					{'route' : 'clinicapolitica', 'nombre' : 'Clinica Politica' },
+					{'route' : 'consulta', 'nombre' : 'Consulta'},
+					{'route' : 'consultaitem', 'nombre' : 'Consulta Item'},
+					{'route' : 'pednacimientodesarrollo', 'nombre' : 'Datos Pediátricos'},
+					{'route' : 'departamento', 'nombre' : 'Departamento'},
+					{'route' : 'detallefactura', 'nombre' : 'Detalle Factura'},
+					{'route' : 'diagnosticopatologia', 'nombre' : 'Diagnostico Patologia'},
+					{'route' : 'disponibilidad', 'nombre' : 'Disponibilidad'},
+					{'route' : 'encargado', 'nombre' : 'Encargado' },
+					{'route' : 'encargadopaciente', 'nombre' : 'Encargado Paciente'},
+					{'route' : 'especialidad', 'nombre' : 'Especialidad'},
+					{'route' : 'recepcion_expediente', 'nombre' : 'Expedientes'},
+					{'route' : 'factura', 'nombre' : 'Factura'},
+					{'route' : 'facturacion_clinicas', 'nombre' : 'Facturas Clinicas' },
+					{'route' : 'modulomedico_historial', 'nombre' : 'Historial'},
+					{'route' : 'inmunizacion', 'nombre' : 'Inmunizacion'},
+					{'route' : 'itemespecialidad', 'nombre' : 'Item Especialidad'},
+					{'route' : 'itemexamenfisico', 'nombre' : 'Item Examen Fisico'},
+					{'route' : 'log', 'nombre' : 'Log'},
+					{'route' : 'medico', 'nombre' : 'Medico'},
+					{'route' : 'municipio', 'nombre' : 'Municipio'},
+					{'route' : 'paciente', 'nombre' : 'Paciente'},
+					{'route' : 'pacientepatologia', 'nombre' : 'Paciente Patologia'},
+					{'route' : 'pantalla', 'nombre' : 'Pantalla'},
+					{'route' : 'pantallaacceso', 'nombre' : 'Pantalla Acceso'},
+					{'route' : 'patologia', 'nombre' : 'Patologia'},
+					{'route' : 'personal', 'nombre' : 'Personal'},
+					{'route' : 'personalclinica', 'nombre' : 'Personal Clinica'},
+					{'route' : 'politica', 'nombre' : 'Politica'},
+					{'route' : 'form_reporte_citas_fecha', 'nombre' : 'Reporte Citas Entre Fechas'},
+					{'route' : 'servicio', 'nombre' : 'Servicio'},
+					{'route' : 'tipoexamen', 'nombre' : 'Tipo Examen'},
+					{'route' : 'tipomedicamento', 'nombre' : 'Tipo Medicamento'},
+					{'route' : 'tipopatologia', 'nombre' : 'Tipo Patologia'},
+					{'route' : 'tipopersonal', 'nombre' : 'Tipo Personal'},
+					{'route' : 'tiposervicio', 'nombre' : 'Tipo Servicio'},
+					{'route' : 'tipousuario', 'nombre' : 'Tipo Usuario'},
+					{'route' : 'tipovacuna', 'nombre' : 'Tipo Vacuna'},
+					{'route' : 'usuario', 'nombre' : 'Usuarios'},
+				]
+			%}
+			<div class="side-menu fl">
+				<h3>Menú</h3>
+				<ul>
+					{% if app.user %}
+						{% for side_menu_route in side_menus %}
+							{% if roles_provider.hasRouteAccess(side_menu_route.route) %}
+								<li><a href="{{ path(side_menu_route.route) }}">{{ side_menu_route.nombre }}</a></li>
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+					
+				</ul>
+			</div> <!-- end side-menu -->
+		
+			<div class="side-content fr">
+			
+				<div class="content-module">
+				
+					{% block content %}
+
+      				<!-- Aqui va el contenido principal -->
+					{% endblock %}		
+					
+				</div> <!-- end content-module -->
+		
+			</div> <!-- end side-content -->
+			
+		
+			</div> <!-- end side-content -->
+		
+		</div>
+</div>
+	{% image '@AsiClinicaBundle/Resources/public/img/spin.gif' %}
+ 	<div id="modal" style="border:3px solid black; background-color:white; padding:25px; font-size:150%; text-align:center; display:none;">
+ 	<!-- Probando la función de abajo en vez del botón -->
+ 		<!-- <button type="button" class="close" onclick="Popup.hide('modal')"><span aria-hidden="true"></span><span class="sr-only">X</span></button> -->
+ 	Procesando...<br><br>
+ 	<img src="{{ asset_url }}" alt="" />
+ 	</div>
+  	{% endimage %}
+	{% include 'AsiClinicaBundle::_footer.html.twig' %}
+	<script type="text/javascript">
+		$(document).on('submit', 'form', function(){
+			Popup.showModal('modal');
+		});
+		$('.chosen_select').chosen({
+			no_results_text: 'No hay resultados para ',
+			search_contains: true,
+			width: '35%'
+		});
+		$('.buscable').DataTable({
+			ordering:false,
+			language: {
+				lengthMenu: 'Mostrar _MENU_ resultados',
+				search: 'Buscar:',
+				zeroRecords:'No hay resultados',
+				info: "Mostrando del _START_ al _END_ de _TOTAL_ elementos",
+				infoEmpty: 'No hay resultados.',
+				infoFiltered: '(filtrados de _MAX_ elementos)',
+				paginate:{
+					first: "Inicio",
+            		previous: "Anterior",
+            		next: "Siguiente",
+            		last: "Fin"
+				}
+			}
+
+		});
+		
+	</script>
+</body>
+</html> 

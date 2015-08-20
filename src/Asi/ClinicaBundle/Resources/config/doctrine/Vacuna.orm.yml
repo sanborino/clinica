@@ -1,0 +1,60 @@
+Asi\ClinicaBundle\Entity\Vacuna:
+    type: entity
+    table: vacuna
+    repositoryClass: Asi\ClinicaBundle\Entity\VacunaRepository
+    indexes:
+        fk_vacuna_tipovacuna_idx:
+            columns:
+                - idTipoVacuna
+    uniqueConstraints:
+        id_serv_UNIQUE:
+            columns:
+                - idServicio
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        cantidaddosis:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: cantidadDosis
+        descripcion:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+        estadoactivacion:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '1'
+            column: estadoActivacion
+    manyToOne:
+        idservicio:
+            targetEntity: Servicio
+            cascade: [persist]
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idServicio:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idtipovacuna:
+            targetEntity: Tipovacuna
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idTipoVacuna:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

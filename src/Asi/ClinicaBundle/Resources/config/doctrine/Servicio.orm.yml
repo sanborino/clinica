@@ -1,0 +1,41 @@
+Asi\ClinicaBundle\Entity\Servicio:
+    type: entity
+    table: servicio
+    repositoryClass: Asi\ClinicaBundle\Entity\ServicioRepository
+    indexes:
+        fk_serv_tposerv_idx:
+            columns:
+                - idTipoServicio
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+        precio:
+            type: decimal
+            nullable: true
+            precision: 6
+            scale: 2
+            comment: ''
+    manyToOne:
+        idtiposervicio:
+            targetEntity: Tiposervicio
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idTipoServicio:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

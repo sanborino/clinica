@@ -1,0 +1,44 @@
+Asi\ClinicaBundle\Entity\Itemespecialidad:
+    type: entity
+    table: itemEspecialidad
+    indexes:
+        id_item_especialidad_especialidad1_idx:
+            columns:
+                - idEspecialidad
+        id_item_especialidad_item_examen_fisico1_idx:
+            columns:
+                - idItemExamenFisico
+    uniqueConstraints:
+        unique_especialidad_item:
+            columns:
+                - idEspecialidad
+                - idItemExamenFisico
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        idespecialidad:
+            targetEntity: Especialidad
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idEspecialidad:
+                    referencedColumnName: id
+            orphanRemoval: false
+        iditemexamenfisico:
+            targetEntity: Itemexamenfisico
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idItemExamenFisico:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

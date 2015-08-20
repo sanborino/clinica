@@ -1,0 +1,45 @@
+Asi\ClinicaBundle\Entity\Personalclinica:
+    type: entity
+    table: personalClinica
+    repositoryClass: Asi\ClinicaBundle\Entity\PersonalclinicaRepository
+    indexes:
+        fk_personalclinica_clinica_idx:
+            columns:
+                - idClinica
+        IDX_E6BE7826A22947DF:
+            columns:
+                - idPersonal
+    uniqueConstraints:
+        uq_personal_clinica:
+            columns:
+                - idPersonal
+                - idClinica
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        idclinica:
+            targetEntity: Clinica
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idClinica:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idpersonal:
+            targetEntity: Personal
+            cascade: {  }
+            mappedBy: null
+            inversedBy: personalclinica
+            joinColumns:
+                idPersonal:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,31 @@
+disponibilidad:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Disponibilidad:index" }
+    # defaults: { _controller: "AsiClinicaBundle:Disponibilidad:agendarCita" }
+
+disponibilidad_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Disponibilidad:show" }
+
+disponibilidad_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Disponibilidad:new" }
+
+disponibilidad_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Disponibilidad:create" }
+    requirements: { _method: post }
+
+disponibilidad_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Disponibilidad:edit" }
+
+disponibilidad_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Disponibilidad:update" }
+    requirements: { _method: post|put }
+
+disponibilidad_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Disponibilidad:delete" }
+    requirements: { _method: post|delete }

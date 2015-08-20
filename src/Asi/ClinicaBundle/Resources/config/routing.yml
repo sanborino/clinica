@@ -1,0 +1,31 @@
+asi_clinica_homepage:
+    path:     /
+    defaults: { _controller: AsiClinicaBundle:Default:index }
+
+asi_clinica_paciente:
+        resource: "@AsiClinicaBundle/Resources/config/routing/modulopaciente.yml"
+        prefix:   /paciente
+
+AsiClinicaBundle_moduloadmin:
+        resource: "@AsiClinicaBundle/Resources/config/routing/moduloadmin.yml"
+        prefix:   /admin
+
+AsiClinicaBundle_modulomedico:
+        resource: "@AsiClinicaBundle/Resources/config/routing/modulomedico.yml"
+        prefix:   /medico
+
+AsiClinicaBundle_recepcion:
+        resource: "@AsiClinicaBundle/Resources/config/routing/modulorecepcion.yml"
+        prefix:   /recepcion
+
+AsiClinicaBundle_reportes:
+        resource: "@AsiClinicaBundle/Resources/config/routing/moduloreportes.yml"
+        prefix:   /recepcion
+
+asi_clinica_usuario:
+        resource: "@AsiClinicaBundle/Resources/config/routing/usuario.yml"
+        prefix:   /admin/usuario
+
+AsiClinicaBundle_registropaciente:
+        resource: "@AsiClinicaBundle/Resources/config/routing/registropaciente.yml"
+        prefix:   /registropaciente

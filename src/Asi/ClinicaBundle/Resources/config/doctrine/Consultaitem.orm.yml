@@ -1,0 +1,47 @@
+Asi\ClinicaBundle\Entity\Consultaitem:
+    type: entity
+    table: consultaItem
+    repositoryClass: Asi\ClinicaBundle\Entity\ConsultaitemRepository
+    indexes:
+        id_consulta_item_item_examen_fisico1_idx:
+            columns:
+                - idItemExamenFisico
+        id_consulta_item_cita_idx:
+            columns:
+                - idCita
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        valor:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+            comment: ''
+    manyToOne:
+        iditemexamenfisico:
+            targetEntity: Itemexamenfisico
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idItemExamenFisico:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idconsulta:
+            targetEntity: Consulta
+            cascade: [persist]
+            mappedBy: null
+            inversedBy: consultaitem
+            joinColumns:
+                idConsulta:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,159 @@
+asi_clinica_admin:
+    path:     /
+    defaults: { _controller: AsiClinicaBundle:Default:admin }
+
+
+
+AsiClinicaBundle_clinica:
+        resource: "@AsiClinicaBundle/Resources/config/routing/clinica.yml"
+        prefix:   /clinica
+
+AsiClinicaBundle_clinicapolitica:
+        resource: "@AsiClinicaBundle/Resources/config/routing/clinicapolitica.yml"
+        prefix:   /clinicapolitica
+
+AsiClinicaBundle_consulta:
+        resource: "@AsiClinicaBundle/Resources/config/routing/consulta.yml"
+        prefix:   /consulta
+
+AsiClinicaBundle_consultaitem:
+        resource: "@AsiClinicaBundle/Resources/config/routing/consultaitem.yml"
+        prefix:   /consultaitem
+
+AsiClinicaBundle_departamento:
+        resource: "@AsiClinicaBundle/Resources/config/routing/departamento.yml"
+        prefix:   /departamento
+
+AsiClinicaBundle_pantallaacceso:
+        resource: "@AsiClinicaBundle/Resources/config/routing/pantallaacceso.yml"
+        prefix:   /pantallaacceso
+
+AsiClinicaBundle_detallefactura:
+        resource: "@AsiClinicaBundle/Resources/config/routing/detallefactura.yml"
+        prefix:   /detallefactura
+
+AsiClinicaBundle_diagnosticopatologia:
+        resource: "@AsiClinicaBundle/Resources/config/routing/diagnosticopatologia.yml"
+        prefix:   /diagnosticopatologia
+
+#me lleve al encargado
+
+AsiClinicaBundle_especialidad:
+        resource: "@AsiClinicaBundle/Resources/config/routing/especialidad.yml"
+        prefix:   /especialidad
+
+AsiClinicaBundle_examen:
+        resource: "@AsiClinicaBundle/Resources/config/routing/examen.yml"
+        prefix:   /examen
+
+AsiClinicaBundle_factura:
+        resource: "@AsiClinicaBundle/Resources/config/routing/factura.yml"
+        prefix:   /factura
+
+AsiClinicaBundle_inmunizacion:
+        resource: "@AsiClinicaBundle/Resources/config/routing/inmunizacion.yml"
+        prefix:   /inmunizacion
+
+AsiClinicaBundle_itemespecialidad:
+        resource: "@AsiClinicaBundle/Resources/config/routing/itemespecialidad.yml"
+        prefix:   /itemespecialidad
+
+AsiClinicaBundle_itemexamenfisico:
+        resource: "@AsiClinicaBundle/Resources/config/routing/itemexamenfisico.yml"
+        prefix:   /itemexamenfisico
+
+AsiClinicaBundle_log:
+        resource: "@AsiClinicaBundle/Resources/config/routing/log.yml"
+        prefix:   /log
+
+AsiClinicaBundle_medicamento:
+        resource: "@AsiClinicaBundle/Resources/config/routing/medicamento.yml"
+        prefix:   /medicamento
+
+AsiClinicaBundle_medico:
+        resource: "@AsiClinicaBundle/Resources/config/routing/medico.yml"
+        prefix:   /medico
+
+AsiClinicaBundle_municipio:
+        resource: "@AsiClinicaBundle/Resources/config/routing/municipio.yml"
+        prefix:   /municipio
+
+AsiClinicaBundle_paciente:
+        resource: "@AsiClinicaBundle/Resources/config/routing/paciente.yml"
+        prefix:   /paciente
+
+AsiClinicaBundle_pacientepatologia:
+        resource: "@AsiClinicaBundle/Resources/config/routing/pacientepatologia.yml"
+        prefix:   /pacientepatologia
+
+AsiClinicaBundle_pantalla:
+        resource: "@AsiClinicaBundle/Resources/config/routing/pantalla.yml"
+        prefix:   /pantalla
+
+AsiClinicaBundle_patologia:
+        resource: "@AsiClinicaBundle/Resources/config/routing/patologia.yml"
+        prefix:   /patologia
+
+AsiClinicaBundle_personal:
+        resource: "@AsiClinicaBundle/Resources/config/routing/personal.yml"
+        prefix:   /personal
+
+AsiClinicaBundle_pednacimientodesarrollo:
+        resource: "@AsiClinicaBundle/Resources/config/routing/pednacimientodesarrollo.yml"
+        prefix:   /pednacimientodesarrollo
+
+AsiClinicaBundle_personalclinica:
+        resource: "@AsiClinicaBundle/Resources/config/routing/personalclinica.yml"
+        prefix:   /personalclinica
+
+AsiClinicaBundle_politica:
+        resource: "@AsiClinicaBundle/Resources/config/routing/politica.yml"
+        prefix:   /politica
+
+AsiClinicaBundle_servicio:
+        resource: "@AsiClinicaBundle/Resources/config/routing/servicio.yml"
+        prefix:   /servicio
+
+AsiClinicaBundle_tipoexamen:
+        resource: "@AsiClinicaBundle/Resources/config/routing/tipoexamen.yml"
+        prefix:   /tipoexamen
+
+AsiClinicaBundle_tipomedicamento:
+        resource: "@AsiClinicaBundle/Resources/config/routing/tipomedicamento.yml"
+        prefix:   /tipomedicamento
+
+AsiClinicaBundle_tipopatologia:
+        resource: "@AsiClinicaBundle/Resources/config/routing/tipopatologia.yml"
+        prefix:   /tipopatologia
+
+AsiClinicaBundle_tipopersonal:
+        resource: "@AsiClinicaBundle/Resources/config/routing/tipopersonal.yml"
+        prefix:   /tipopersonal
+
+AsiClinicaBundle_tiposervicio:
+        resource: "@AsiClinicaBundle/Resources/config/routing/tiposervicio.yml"
+        prefix:   /tiposervicio
+
+AsiClinicaBundle_tipousuario:
+        resource: "@AsiClinicaBundle/Resources/config/routing/tipousuario.yml"
+        prefix:   /tipousuario
+
+AsiClinicaBundle_tipovacuna:
+        resource: "@AsiClinicaBundle/Resources/config/routing/tipovacuna.yml"
+        prefix:   /tipovacuna
+
+AsiClinicaBundle_vacuna:
+        resource: "@AsiClinicaBundle/Resources/config/routing/vacuna.yml"
+        prefix:   /vacuna
+
+AsiClinicaBundle_usuario:
+        resource: "@AsiClinicaBundle/Resources/config/routing/usuario.yml"
+        prefix:   /usuario
+
+AsiClinicaBundle_reporte:
+        resource: "@AsiClinicaBundle/Resources/config/routing/reporte.yml"
+        prefix:   /reporte
+
+AsiClinicaBundle_paciente:
+        resource: "@AsiClinicaBundle/Resources/config/routing/paciente.yml"
+        prefix:   /paciente

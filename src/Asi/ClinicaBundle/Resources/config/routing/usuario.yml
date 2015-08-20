@@ -1,0 +1,44 @@
+usuario:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Usuario:index" }
+
+usuario_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Usuario:show" }
+
+usuario_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Usuario:new" }
+
+usuario_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Usuario:create" }
+    requirements: { _method: post }
+
+usuario_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Usuario:edit" }
+
+usuario_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Usuario:update" }
+    requirements: { _method: post|put }
+
+usuario_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Usuario:delete" }
+    requirements: { _method: post|delete }
+
+usuario_roles:
+    path:     /{id}/roles
+    defaults: { _controller: "AsiClinicaBundle:Usuario:roles" }
+
+usuario_roles_add:
+    path:     /{id}/roles/add/{role}
+    defaults: { _controller: "AsiClinicaBundle:Usuario:addRole" }
+    # requirements: { _method: post|put }
+
+usuario_roles_delete:
+    path:     /{id}/roles/delete/{role}
+    defaults: { _controller: "AsiClinicaBundle:Usuario:deleteRole" }
+    # requirements: { _method: post|delete }

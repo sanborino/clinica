@@ -1,0 +1,3 @@
+reporte:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Reporte:view" }

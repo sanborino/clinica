@@ -1,0 +1,122 @@
+Asi\ClinicaBundle\Entity\Paciente:
+    type: entity
+    table: paciente
+    repositoryClass: Asi\ClinicaBundle\Entity\PacienteRepository
+    indexes:
+        id_paciente_municipio_idx:
+            columns:
+                - idMunicipio
+    uniqueConstraints:
+        id_usuario_UNIQUE:
+            columns:
+                - idUsuario
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        dui:
+            type: string
+            nullable: true
+            length: 10
+            fixed: false
+            comment: ''
+        nombres:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+        apellidos:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+        genero:
+            type: string
+            nullable: false
+            length: 1
+            fixed: false
+            comment: ''
+        fechanacimiento:
+            type: date
+            nullable: false
+            comment: ''
+            column: fechaNacimiento
+        telefono:
+            type: string
+            nullable: true
+            length: 15
+            fixed: false
+            comment: ''
+        movil:
+            type: string
+            nullable: true
+            length: 15
+            fixed: false
+            comment: ''
+        referidopor:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: referidoPor
+        lugarnacimiento:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: lugarNacimiento
+        fechacreacion:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: fechaCreacion
+        direccion:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: ''
+    oneToOne:
+        idusuario:
+            targetEntity: User
+            cascade: [persist]
+            mappedBy: null
+            inversedBy: idpaciente
+            joinColumns:
+                idUsuario:
+                    referencedColumnName: id
+            orphanRemoval: false
+        pednacimientodesarrollo:
+            targetEntity: Pednacimientodesarrollo
+            mappedBy: idpaciente
+    manyToOne:
+        idmunicipio:
+            targetEntity: Municipio
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idMunicipio:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToMany:
+        encargadopaciente:
+            targetEntity: Encargadopaciente
+            mappedBy: idpaciente
+        inmunizacion:
+            targetEntity: Inmunizacion
+            mappedBy: idpaciente
+        pacientepatologia:
+            targetEntity: Pacientepatologia
+            mappedBy: idpaciente
+    lifecycleCallbacks: {  }

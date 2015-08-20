@@ -1,0 +1,70 @@
+Asi\ClinicaBundle\Entity\Cita:
+    type: entity
+    table: cita
+    repositoryClass: Asi\ClinicaBundle\Entity\CitaRepository
+    indexes:
+        id_cita_paciente_idx:
+            columns:
+                - idPaciente
+        fk_cita_agenda1_idx:
+            columns:
+                - idagenda
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        fecharealizacion:
+            type: datetime
+            nullable: false
+            comment: ''
+            column: fechaRealizacion
+        comentario:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: ''
+        estado:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            comment: ''
+            default: 'Pendiente'
+        tipocita:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+            column: tipoCita
+    manyToOne:
+        idpaciente:
+            targetEntity: Paciente
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idPaciente:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idDisponibilidad:
+            targetEntity: Disponibilidad
+            cascade: {  }
+            mappedBy: null
+            inversedBy: citas
+            joinColumns:
+                idDisponibilidad:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToOne:
+        idconsulta:
+            targetEntity: Consulta
+            mappedBy: idcita
+    lifecycleCallbacks: {  }

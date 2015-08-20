@@ -1,0 +1,30 @@
+departamento:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Departamento:index" }
+
+departamento_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Departamento:show" }
+
+departamento_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Departamento:new" }
+
+departamento_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Departamento:create" }
+    requirements: { _method: post }
+
+departamento_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Departamento:edit" }
+
+departamento_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Departamento:update" }
+    requirements: { _method: post|put }
+
+departamento_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Departamento:delete" }
+    requirements: { _method: post|delete }

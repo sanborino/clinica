@@ -1,0 +1,30 @@
+paciente:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Paciente:index" }
+
+paciente_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Paciente:show" }
+
+paciente_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Paciente:new" }
+
+paciente_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Paciente:create" }
+    requirements: { _method: post }
+
+paciente_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Paciente:edit" }
+
+paciente_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Paciente:update" }
+    requirements: { _method: post|put }
+
+paciente_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Paciente:delete" }
+    requirements: { _method: post|delete }

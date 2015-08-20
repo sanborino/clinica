@@ -1,0 +1,72 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+    <div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">CAPTURA DE PERSONAL</h3>
+                        <span class="fr expand-collapse-text" style="display: block;">Click para colapsar</span>
+                        <span class="fr expand-collapse-text initial-expand" style="display: none;">Click para expandir</span>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block;">
+
+    <table class="records_list buscable hover row-border compact">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre completo</th>
+                <th style="width:4%">Edad</th>
+                <th style="width:5%">Tel&eacute;fono</th>
+                <th style="width:5%">Dui</th>
+                <th style="width:5%">M&oacute;vil</th>
+                <th>Direcci&oacute;n</th>
+                <th style="width:7%">Tipo</th>
+                <th>Consultorios</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('personal_edit', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">{{ entity.id }}</a></td>
+                <td>{{ entity.getNombreApellido() }}</td>
+                <td>{{ entity.getEdad() }}</td>
+                <td>{{ entity.telefono }}</td>
+                <td>{{ entity.dui }}</td>
+                <td>{{ entity.movil }}</td>
+                <td>{{ entity.direccion }}</td>
+                <td>{% if entity.idusuario %}{{ entity.idusuario.idtipousuario.nombre }}{% endif %}</td>
+                <td>
+                {% for personalclinica in entity.personalclinica %}
+                    –{{personalclinica.idclinica.nombre}}&#10;
+                {% endfor %}
+                </td>
+                <td>
+                <ul>
+                <a href="{{ path('personal_edit', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">
+                {% image '@AsiClinicaBundle/Resources/public/img/actions-edit.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}                
+                </a>
+
+                <a href="{{ path('personal_show', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">
+                {% image '@AsiClinicaBundle/Resources/public/img/actions-delete.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}
+                </a>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+       <a class="round button blue text-upper small-button" href="{{ path('personal_new') }}" onclick= "Popup.showModal('modal');return false;">
+    CREAR NUEVA ENTRADA
+            {% image '@AsiClinicaBundle/Resources/public/img/ic_right.png' %}
+            <img src="{{ asset_url }}" />
+            {% endimage %}
+    </a>
+    {% endblock %}

@@ -1,0 +1,68 @@
+    <center>
+        <table>
+            <tr>
+                <td><hr/></td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <h1>Factura</h1>
+                </td>
+            </tr>
+            <tr>
+                <td><hr/></td>
+            </tr>
+        </table>
+    </center>
+
+    <h1>Titular:</h1> <h2>{{factura.titular}}</h2>
+    <h1>Dui:</h1> <h2>{{factura.dui}}</h2>
+    <h1>Nit:</h1> <h2>{{factura.nit}}</h2>
+
+        {% if (detalle) %}
+
+        <table style="table-layout: fixed;width: 100%;margin-bottom: 1.25em;font-size: 0.75em;border-collapse: collapse;border-spacing: 0;margin: 0;padding: 0;display: table;border-collapse: separate;border-spacing: 2px;border-color: gray;">
+            <thead style="display: table-header-group;vertical-align: middle;border-color: inherit;">
+                <tr style="display: table-row;vertical-align: inherit;border-color: inherit;">
+                    <th style="width: 20%;text-align: center;padding: 0;border: none;border-bottom: 1px solid #f8f9fa;background-color: #428BCA;color: white;border-left: 1px solid #00ACE9;font-style: normal;margin: 0;font-weight: normal;display: table-cell;vertical-align: inherit;">Nombre</th>
+                    <th style="width: 20%;text-align: center;padding: 0;border: none;border-bottom: 1px solid #f8f9fa;background-color: #428BCA;color: white;border-left: 1px solid #00ACE9;font-style: normal;margin: 0;font-weight: normal;display: table-cell;vertical-align: inherit;">Precio</th>
+                    <th style="width: 20%;text-align: center;padding: 0;border: none;border-bottom: 1px solid #f8f9fa;background-color: #428BCA;color: white;border-left: 1px solid #00ACE9;font-style: normal;margin: 0;font-weight: normal;display: table-cell;vertical-align: inherit;">Cantidad</th>
+                    <th style="width: 20%;text-align: center;padding: 0;border: none;border-bottom: 1px solid #f8f9fa;background-color: #428BCA;color: white;border-left: 1px solid #00ACE9;font-style: normal;margin: 0;font-weight: normal;display: table-cell;vertical-align: inherit;">Descuento</th>
+                    <th style="width: 20%;text-align: center;padding: 0;border: none;border-bottom: 1px solid #f8f9fa;background-color: #428BCA;color: white;border-left: 1px solid #00ACE9;font-style: normal;margin: 0;font-weight: normal;display: table-cell;vertical-align: inherit;">Comentario</th>
+                
+                </tr>
+            </thead>
+            <tbody style="display: table-row-group;vertical-align: middle;border-color: inherit;">
+
+            {% set totalFactura = 0 %}
+
+            {% for det in detalle %}
+                <tr style="display: table-row;vertical-align: inherit;border-color: inherit;">
+
+                 <td style="width: 4em /* 48/12 */;text-align: center;padding: 0;border: none;border-bottom: 1px solid #f8f9fa;border-left: 1px solid white;word-wrap: break-word;margin: 0;display: table-cell;vertical-align: inherit;">{{ det.getIdservicio().nombre}}</td>
+                 <td style="width: 4em /* 48/12 */;text-align: center;padding: 0;border: none;border-bottom: 1px solid #f8f9fa;border-left: 1px solid white;word-wrap: break-word;margin: 0;display: table-cell;vertical-align: inherit;">{{ det.precio}}</td>
+                  <td style="width: 4em /* 48/12 */;text-align: center;padding: 0;border: none;border-bottom: 1px solid #f8f9fa;border-left: 1px solid white;word-wrap: break-word;margin: 0;display: table-cell;vertical-align: inherit;">{{ det.cantidad}}</td>
+                  <td style="width: 4em /* 48/12 */;text-align: center;padding: 0;border: none;border-bottom: 1px solid #f8f9fa;border-left: 1px solid white;word-wrap: break-word;margin: 0;display: table-cell;vertical-align: inherit;">{{ det.descuento}}</td>
+                  <td style="width: 4em /* 48/12 */;text-align: center;padding: 0;border: none;border-bottom: 1px solid #f8f9fa;border-left: 1px solid white;word-wrap: break-word;margin: 0;display: table-cell;vertical-align: inherit;"s>{{ det.comentario}}</td>
+                  
+                </tr>
+                {% set i = totalFactura %}
+
+                {% set totalFactura= i + (det.precio * det.cantidad) %}
+
+            {% endfor %}
+
+            
+            </tbody>
+        </table>
+
+        {% endif %}
+
+
+        <hr />
+        {% if (detalle) %}
+        <div align="right">
+            <h2>Total Factura: ${{ totalFactura }}</h2>
+        </div>
+        {% endif %}
+
+    </div>

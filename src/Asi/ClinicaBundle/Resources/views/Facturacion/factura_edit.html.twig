@@ -1,0 +1,91 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+    <div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">DETALLE DE FACTURA</h3>
+                        <div>  </div>
+                    
+                    </div> <!-- end content-module-heading -->
+
+    <div class="content-module-main" style="display: block;">
+    <div id="tabla">
+    <div>  <h1> Titular: {{factura.titular}}  Dui: {{factura.dui}}  Nit: {{factura.nit}} </h1> </div>
+
+        {% if (detalle) %}
+
+        <table class="records_list">
+            <thead>
+                <tr>
+                    <th style="width: 20%">Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Descuento</th>
+                    <th>Acciones</th>
+                
+                </tr>
+            </thead>
+            <tbody>
+
+             {% set totalFactura = 0 %}
+
+            {% for det in detalle %}
+                <tr>
+
+                 <td>{{ det.getIdservicio().nombre}}</td>
+                 <td>{{ det.precio}}</td>
+                  <td>{{ det.cantidad}}</td>
+                  <td>{{ det.descuento}} %</td>
+                  <td>
+                    <ul>
+                    <a href="{{ path('recepcion_factura_edit_borrar', { 'id': det.getId() }) }}" onclick= "Popup.showModal('modal');return false;">
+                    {% image '@AsiClinicaBundle/Resources/public/img/actions-delete.png' %}
+                    <img src="{{ asset_url }}" />
+                    {% endimage %}                
+                    </a>
+                    
+                    </ul>
+                </td>
+                  
+                  
+                </tr>
+                {% set i = totalFactura %}
+
+                {% set totalFactura= i + ((det.precio - (det.precio * (det.descuento/100))) * det.cantidad) %}
+
+            {% endfor %}
+
+            
+            </tbody>
+        </table>
+
+        {% endif %}
+
+=======
+        {% if (detalle) %}
+        <h3>Total Factura: ${{ totalFactura }}</h3>
+        {% endif %}
+
+
+    </div>
+    <div> 
+
+
+    <a href="{{ path('recepcion_factura_emitir', { 'id': factura.id }) }}" onclick= "Popup.showModal('modal');return false;"> Emitir Factura </a>
+
+
+
+
+     </div>
+    <div id="form">
+
+    {{ form(form) }}
+    
+    </div>
+
+ <ul class="record_actions">
+   
+</ul>
+{% endblock %}

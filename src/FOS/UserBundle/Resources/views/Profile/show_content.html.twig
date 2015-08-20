@@ -1,0 +1,11 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="fos_user_user_show">
+    <p>{{ 'Nombre del usuario'|trans }}: {{ user.username }}</p>
+    <p>{{ 'Email'|trans }}: {{ user.email }}</p>
+    <p>{{ 'Tipo de Usuario'|trans }}: {{ user.idTipoUsuario.getNombre }}</p>
+    {% for key,value in datos %}
+    <p>{{ key|trans }}: {{ value }}</p>
+	{% endfor %}
+
+</div>

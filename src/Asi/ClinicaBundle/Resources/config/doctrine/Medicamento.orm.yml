@@ -1,0 +1,54 @@
+Asi\ClinicaBundle\Entity\Medicamento:
+    type: entity
+    table: medicamento
+    repositoryClass: Asi\ClinicaBundle\Entity\MedicamentoRepository
+    indexes:
+        id_medicamento_tipo_medicamento1_idx:
+            columns:
+                - idTipoMedicamento
+    uniqueConstraints:
+        id_serv_UNIQUE:
+            columns:
+                - idServicio
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        descripcion:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: ''
+        estadoactivacion:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '1'
+            column: estadoActivacion
+    manyToOne:
+        idtipomedicamento:
+            targetEntity: Tipomedicamento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idTipoMedicamento:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idservicio:
+            targetEntity: Servicio
+            cascade: [persist]
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idServicio:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

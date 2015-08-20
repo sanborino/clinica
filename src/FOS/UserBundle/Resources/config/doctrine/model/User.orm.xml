@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="FOS\UserBundle\Model\User">
+
+        <field name="username" column="nombre" type="string" length="255" />
+
+        <field name="usernameCanonical" column="usernameCanonical" type="string" length="255" unique="true" />
+
+        <field name="email" column="email" type="string" length="255" />
+
+        <field name="emailCanonical" column="emailCanonical" type="string" length="255" unique="true" />
+
+        <field name="enabled" column="enabled" type="boolean" />
+
+        <field name="salt" column="salt" type="string" />
+
+        <field name="password" column="password" type="string" />
+
+        <field name="lastLogin" column="lastLogin" type="datetime" nullable="true" />
+
+        <field name="locked" column="locked" type="boolean" />
+
+        <field name="expired" column="expired" type="boolean" />
+
+        <field name="expiresAt" column="expiresAt" type="datetime" nullable="true" />
+
+        <field name="confirmationToken" column="confirmationToken" type="string" nullable="true" />
+
+        <field name="passwordRequestedAt" column="passwordRequestedAt" type="datetime" nullable="true" />
+
+        <field name="roles" column="roles" type="array" />
+
+        <field name="credentialsExpired" column="credentialsExpired" type="boolean" />
+
+        <field name="credentialsExpireAt" column="credentialsExpireAt" type="datetime" nullable="true" />
+
+        <field name="estadoActivacion" column="estadoActivacion" type="boolean" nullable="false" default="1"/>
+
+        <many-to-one
+            field="idTipoUsuario"
+            target-entity="Asi\ClinicaBundle\Entity\Tipousuario"
+            join-column="idTipoUsuario">
+            <join-column name="idTipoUsuario" referenced-column-name="id" />
+        </many-to-one>
+        <one-to-one field="idpersonal" target-entity="Asi\ClinicaBundle\Entity\Personal" mapped-by="idusuario" />
+        <one-to-one field="idpaciente" target-entity="Asi\ClinicaBundle\Entity\Paciente" mapped-by="idusuario" />
+    </mapped-superclass>
+
+</doctrine-mapping>

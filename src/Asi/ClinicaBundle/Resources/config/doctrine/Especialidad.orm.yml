@@ -1,0 +1,33 @@
+Asi\ClinicaBundle\Entity\Especialidad:
+    type: entity
+    table: especialidad
+    repositoryClass: Asi\ClinicaBundle\Entity\EspecialidadRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+        abreviatura:
+            type: string
+            nullable: true
+            length: 8
+            fixed: false
+            comment: ''
+        estadoactivacion:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '1'
+            column: estadoActivacion
+    lifecycleCallbacks: {  }

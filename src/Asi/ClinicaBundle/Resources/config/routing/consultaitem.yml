@@ -1,0 +1,30 @@
+consultaitem:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Consultaitem:index" }
+
+consultaitem_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Consultaitem:show" }
+
+consultaitem_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Consultaitem:new" }
+
+consultaitem_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Consultaitem:create" }
+    requirements: { _method: post }
+
+consultaitem_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Consultaitem:edit" }
+
+consultaitem_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Consultaitem:update" }
+    requirements: { _method: post|put }
+
+consultaitem_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Consultaitem:delete" }
+    requirements: { _method: post|delete }

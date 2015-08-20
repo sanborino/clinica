@@ -1,0 +1,7 @@
+asi_clinica_paciente:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:ModuloPaciente:index" }
+
+AsiClinicaBundle_cita:
+        resource: "@AsiClinicaBundle/Resources/config/routing/cita.yml"
+        prefix:   /cita

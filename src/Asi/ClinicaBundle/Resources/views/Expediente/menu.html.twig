@@ -1,0 +1,72 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+<style type="text/css">
+    a.lilink{
+        float:left;
+        clear:both;
+        margin-bottom:4%;
+        width: 25%;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .header{
+        font-weight: bold;
+        font-size: 15px;
+        float:left;
+        clear:both;
+        padding:1%;
+        margin-left: 25%;
+
+    }
+
+    .red{
+        color:white;
+    }
+</style>
+
+<div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">Ingreso de datos de historial</h3>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block;">
+
+
+
+<div style="display: block; overflow:hidden">
+
+<label class="header">Paciente : <a target="_blank" href="{{ path('recepcion_expediente_paciente_datos', { 'id': paciente.id }) }}">{{ paciente.getNombreApellido() }}</a></label>
+
+    <a class="round button small-button image-right ic-right-arrow lilink blue" href="{{ path('recepcion_expediente_paciente_patologia', { 'id' : id }) }}">
+            Agregar patolog&iacute;as importantes
+    </a>
+
+    <a class="round button small-button image-right ic-right-arrow lilink blue" href="{{ path('recepcion_expediente_paciente_inmunizacion', { 'id' : id }) }}">
+            Agregar inmunizaciones
+    </a>
+
+    <a class="round button small-button image-right ic-right-arrow lilink
+    {% if paciente.pednacimientodesarrollo %}
+    red" disabled>
+        Paciente ya tiene datos pedi&aacute;tricos
+    {% else %}
+    blue" href="{{ path('recepcion_expediente_paciente_pednacimientodesarrollo', { 'id' : id }) }}">
+        Agregar datos pedi&aacute;tricos
+    {% endif %}
+    </a>
+</div>
+
+<ul class="record_actions">
+    <a class="round button blue small-button" href="{{ path('recepcion_expediente') }}" onclick= "Popup.showModal('modal');return false;">
+            {% image '@AsiClinicaBundle/Resources/public/img/ic_left.png' %}
+            <img src="{{ asset_url }}" />
+            {% endimage %}
+            Regresar
+    </a>
+</ul>
+
+{% endblock %}

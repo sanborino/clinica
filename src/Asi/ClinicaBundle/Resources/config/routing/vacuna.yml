@@ -1,0 +1,30 @@
+vacuna:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Vacuna:index" }
+
+vacuna_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Vacuna:show" }
+
+vacuna_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Vacuna:new" }
+
+vacuna_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Vacuna:create" }
+    requirements: { _method: post }
+
+vacuna_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Vacuna:edit" }
+
+vacuna_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Vacuna:update" }
+    requirements: { _method: post|put }
+
+vacuna_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Vacuna:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,27 @@
+Asi\ClinicaBundle\Entity\PantallaAcceso:
+    type: entity
+    table: pantallaAcceso
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        pantalla:
+            targetEntity: Pantalla
+            inversedBy: pantallaAcceso
+            joinColumns:
+                idPantalla:
+                    referencedColumnName: id
+            orphanRemoval: false
+        tipoUsuario:
+            targetEntity: Tipousuario
+            inversedBy: pantallaAcceso
+            joinColumns:
+                idTipoUsuario:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

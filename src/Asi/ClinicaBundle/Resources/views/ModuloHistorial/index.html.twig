@@ -1,0 +1,36 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+<style type="text/css">
+        a.lilink{
+            float:left;
+            clear:both;
+            margin-bottom:4%;
+            width: 20%;
+            font-size: 12px;
+            font-weight: bold;
+        }
+</style>
+
+<div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">HISTORIAL</h3>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block;">
+
+
+<div style="display: block; overflow:hidden">
+    <a class="round button small-button image-right ic-right-arrow lilink blue" href="{{ path('modulomedico_historial_pacientes') }}">
+            Historial de pacientes
+    </a>
+
+    <a class="round button small-button image-right ic-right-arrow lilink blue" href="{{ path('modulomedico_historial_consultas') }}">
+            Historial de consultas
+    </a>
+</div>
+
+
+{% endblock %}

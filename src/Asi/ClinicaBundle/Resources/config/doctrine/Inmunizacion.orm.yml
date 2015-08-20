@@ -1,0 +1,58 @@
+Asi\ClinicaBundle\Entity\Inmunizacion:
+    type: entity
+    table: inmunizacion
+    repositoryClass: Asi\ClinicaBundle\Entity\InmunizacionRepository
+    indexes:
+        id_inmunizacion_cat_vacuna1_idx:
+            columns:
+                - idServicio
+        id_inmunizacion_paciente1_idx:
+            columns:
+                - idPaciente
+        fk_inmunizacion_consulta_idx:
+            columns:
+                - idCita
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        fechatomada:
+            type: date
+            nullable: false
+            comment: ''
+            column: fechaTomada
+    manyToOne:
+        idvacuna:
+            targetEntity: Vacuna
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idVacuna:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idpaciente:
+            targetEntity: Paciente
+            cascade: {  }
+            mappedBy: null
+            inversedBy: inmunizacion
+            joinColumns:
+                idPaciente:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idconsulta:
+            targetEntity: Consulta
+            cascade: {  }
+            mappedBy: null
+            inversedBy: inmunizacion
+            joinColumns:
+                idConsulta:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,51 @@
+{% extends 'AsiClinicaBundle::clinica_template.html.twig' %}
+
+{% block content %}
+<div class="content-module">
+                
+                    <div class="content-module-heading cf">
+                    
+                        <h3 class="fl">EDITAR O ELIMINAR DIAGNOSTICO PATOLOGIA</h3>
+                    
+                    </div> <!-- end content-module-heading -->
+    <div class="content-module-main" style="display: block;">
+
+    <table class="record_properties">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Paciente</th>
+                <th>Patolog&iacute;a</th>
+                <th>Fecha de diagn&oacute;stico</th>
+                <th>Diagnosticado en consulta</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ entity.id }}</td>
+                <td>{{entity.idpacientepatologia.idpaciente.nombres}}</td>
+                <td>{{entity.idpacientepatologia.idpatologia.nombre}}</td>
+                <td>{{entity.idpacientepatologia.fechadiagnostico|date('Y-m-d')}}</td>
+                <td>{{entity.idconsulta.id}}</td>
+                <td>
+                <a href="{{ path('diagnosticopatologia_edit', { 'id': entity.id }) }}" onclick= "Popup.showModal('modal');return false;">
+                {% image '@AsiClinicaBundle/Resources/public/img/actions-edit.png' %}
+                <img src="{{ asset_url }}" />
+                {% endimage %}                
+                </a>
+                {{ form(delete_form) }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions" onclick= "Popup.showModal('modal');return false;">
+    <a class="round button blue text-upper small-button" href="{{ path('diagnosticopatologia') }}">
+            {% image '@AsiClinicaBundle/Resources/public/img/ic_left.png' %}
+            <img src="{{ asset_url }}" />
+            {% endimage %}
+            REGRESAR
+    </a>
+    </ul>
+{% endblock %}

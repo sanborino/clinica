@@ -1,0 +1,44 @@
+Asi\ClinicaBundle\Entity\Clinicapolitica:
+    type: entity
+    table: clinicaPolitica
+    indexes:
+        id_clinica_politica_clinica1_idx:
+            columns:
+                - idClinica
+        id_clinica_politica_politica1_idx:
+            columns:
+                - idPolitica
+    uniqueConstraints:
+        unique_clinica_politica:
+            columns:
+                - idClinica
+                - idPolitica
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        idclinica:
+            targetEntity: Clinica
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idClinica:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idpolitica:
+            targetEntity: Politica
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idPolitica:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

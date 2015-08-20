@@ -1,0 +1,61 @@
+Asi\ClinicaBundle\Entity\Pacientepatologia:
+    type: entity
+    table: pacientePatologia
+    repositoryClass: Asi\ClinicaBundle\Entity\PacientepatologiaRepository
+    indexes:
+        id_paciente_patologia_patologia1_idx:
+            columns:
+                - idPatologia
+        id_paciente_patologia_paciente1_idx:
+            columns:
+                - idPaciente
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        fechadiagnostico:
+            type: date
+            nullable: true
+            comment: ''
+            column: fechaDiagnostico
+        importante:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '0'
+        comentario:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+    manyToOne:
+        idpatologia:
+            targetEntity: Patologia
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idPatologia:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idpaciente:
+            targetEntity: Paciente
+            cascade: {  }
+            mappedBy: null
+            inversedBy: pacientepatologia
+            joinColumns:
+                idPaciente:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToOne:
+        diagnosticopatologia:
+            targetEntity: Diagnosticopatologia
+            mappedBy: idpacientepatologia
+    lifecycleCallbacks: {  }

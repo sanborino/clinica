@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+
+		{% image '@AsiClinicaBundle/Resources/public/img/favicon.ico' %}
+ 		<link rel="shortcut icon" href="{{ asset_url }}" />
+ 		{% endimage %}
+
+		<title>.: Cl&iacute;nica Central :.</title>
+
+		{% block stylesheets %}
+			{% stylesheets 
+
+			    '@AsiClinicaBundle/Resources/public/css/familyDroid.css'
+			    'bundles/asiclinica/css/style.css'
+				
+				filter='cssrewrite'
+			%}
+    		
+    		<link rel="stylesheet" href="{{ asset_url }}" />
+    		{% endstylesheets %}
+		{% endblock %}
+
+		{% block javascripts %}
+			{% javascripts 
+				'@AsiClinicaBundle/Resources/public/js/jquery.min.js'
+			    '@AsiClinicaBundle/Resources/public/js/script.js' 
+			%}
+			
+			<script type="text/javascript" src="{{ asset_url }}"></script>
+			{% endjavascripts %}
+		{% endblock %}
+
+	</head>
+<body>
+
+<!-- TOP BAR -->
+	<div id="top-bar">
+		
+		<div class="page-full-width">
+		</div> <!-- end full-width -->	
+		</div> <!-- end full-width -->	
+	
+	</div> <!-- end top-bar -->
+	
+	
+	
+	<!-- HEADER -->
+	<div id="header">
+		
+		<div class="page-full-width cf">
+	
+			<div id="login-intro" class="fl">
+			
+				<h1>Registro - Clínica Central</h1>
+			
+			</div> <!-- login-intro -->
+			
+			<!-- Change this image to your own company's logo -->
+			<!-- The logo will automatically be resized to 39px height. -->
+			<a href="#" id="company-branding" class="fr">
+				{% image '@AsiClinicaBundle/Resources/public/img/logo.png' %}
+					<img src="{{ asset_url }}" />
+				{% endimage %}
+			</a>
+			
+		</div> <!-- end full-width -->	
+
+	</div> <!-- end header -->
+
+<div id="content">
+{% block content %}
+    <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+{% endblock content %}
+<center><a href="{{ path('registropaciente') }}" class="round button dark" >Continuar</a></center>
+</div>
+	{% include 'AsiClinicaBundle::_footer.html.twig' %}
+</body>
+</html> 

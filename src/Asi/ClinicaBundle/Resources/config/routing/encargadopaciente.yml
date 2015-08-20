@@ -1,0 +1,30 @@
+encargadopaciente:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Encargadopaciente:index" }
+
+encargadopaciente_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Encargadopaciente:show" }
+
+encargadopaciente_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Encargadopaciente:new" }
+
+encargadopaciente_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Encargadopaciente:create" }
+    requirements: { _method: post }
+
+encargadopaciente_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Encargadopaciente:edit" }
+
+encargadopaciente_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Encargadopaciente:update" }
+    requirements: { _method: post|put }
+
+encargadopaciente_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Encargadopaciente:delete" }
+    requirements: { _method: post|delete }

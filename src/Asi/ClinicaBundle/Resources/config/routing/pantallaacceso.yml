@@ -1,0 +1,30 @@
+pantallaacceso:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Pantallaacceso:index" }
+
+pantallaacceso_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Pantallaacceso:show" }
+
+pantallaacceso_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Pantallaacceso:new" }
+
+pantallaacceso_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Pantallaacceso:create" }
+    requirements: { _method: post }
+
+pantallaacceso_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Pantallaacceso:edit" }
+
+pantallaacceso_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Pantallaacceso:update" }
+    requirements: { _method: post|put }
+
+pantallaacceso_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Pantallaacceso:delete" }
+    requirements: { _method: post|delete }

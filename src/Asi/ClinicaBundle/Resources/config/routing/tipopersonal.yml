@@ -1,0 +1,30 @@
+tipopersonal:
+    path:     /
+    defaults: { _controller: "AsiClinicaBundle:Tipopersonal:index" }
+
+tipopersonal_show:
+    path:     /{id}/show
+    defaults: { _controller: "AsiClinicaBundle:Tipopersonal:show" }
+
+tipopersonal_new:
+    path:     /new
+    defaults: { _controller: "AsiClinicaBundle:Tipopersonal:new" }
+
+tipopersonal_create:
+    path:     /create
+    defaults: { _controller: "AsiClinicaBundle:Tipopersonal:create" }
+    requirements: { _method: post }
+
+tipopersonal_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AsiClinicaBundle:Tipopersonal:edit" }
+
+tipopersonal_update:
+    path:     /{id}/update
+    defaults: { _controller: "AsiClinicaBundle:Tipopersonal:update" }
+    requirements: { _method: post|put }
+
+tipopersonal_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AsiClinicaBundle:Tipopersonal:delete" }
+    requirements: { _method: post|delete }

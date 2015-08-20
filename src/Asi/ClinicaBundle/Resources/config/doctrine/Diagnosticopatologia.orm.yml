@@ -1,0 +1,46 @@
+Asi\ClinicaBundle\Entity\Diagnosticopatologia:
+    type: entity
+    table: diagnosticoPatologia
+    repositoryClass: Asi\ClinicaBundle\Entity\DiagnosticopatologiaRepository
+    indexes:
+        id_diagnostico_patologia_paciente_patologia1_idx:
+            columns:
+                - idPacientePatologia
+        id_diagnostico_patologia_cita_idx:
+            columns:
+                - idCita
+    uniqueConstraints:
+        unique_consulta_patologia:
+            columns:
+                - idPacientePatologia
+                - idCita
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    oneToOne:
+        idpacientepatologia:
+            targetEntity: Pacientepatologia
+            cascade: [persist]
+            mappedBy: null
+            inversedBy: diagnosticopatologia
+            joinColumns:
+                idPacientePatologia:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToOne:
+        idconsulta:
+            targetEntity: Consulta
+            cascade: {  }
+            mappedBy: null
+            inversedBy: diagnosticopatologia
+            joinColumns:
+                idConsulta:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
