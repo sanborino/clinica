@@ -489,8 +489,8 @@ class ModuloMedicoController extends Controller
 
         $form = $this->createFormBuilder(null, $parametros);
         foreach ($items as $item) {
-            $alias = $valor = $em->getRepository('AsiClinicaBundle:Consultaitem')->getValorByConsultaAndItem($idconsulta, $item->getId());
-            $alias = ['valor'];
+            $valor = $em->getRepository('AsiClinicaBundle:Consultaitem')->getValorByConsultaAndItem($idconsulta, $item->getId());
+            $valor = ['valor'];
             if ($item->getTipodato()==='checkbox') {
                 $valor = (bool)$valor;
             }
